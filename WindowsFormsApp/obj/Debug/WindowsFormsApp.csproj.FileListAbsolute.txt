@@ -1,0 +1,14 @@
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\bin\Debug\WindowsFormsApp.exe.config
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\bin\Debug\WindowsFormsApp.exe
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\bin\Debug\WindowsFormsApp.pdb
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\bin\Debug\hr\WindowsFormsApp.resources.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojAssemblyReference.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.MainForm.resources
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.Settings.resources
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.Properties.Resources.resources
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.Settings.hr.resources
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.GenerateResource.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.CoreCompileInputs.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\hr\WindowsFormsApp.resources.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.exe
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP-MyProject\OOP-MyProject\WindowsFormsApp\obj\Debug\WindowsFormsApp.pdb
