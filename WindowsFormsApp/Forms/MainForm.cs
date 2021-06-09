@@ -30,12 +30,34 @@ namespace WindowsFormsApp
             Repository.LoadLanguage();            
             FillData();
             FillPlayerData();
-            InitDnD();
-            
+            InitDnD();            
         }
 
         private void InitDnD()
         {
+            //Other players
+            pnlPlayersContainer.DragEnter += PnlPlayersContainer_DragEnter;
+            pnlPlayersContainer.DragDrop += PnlPlayersContainer_DragDrop;            
+
+            //Favourite players
+            pnlFavouritePlayersContainer.DragEnter += PnlFavouritePlayersContainer_DragEnter;
+            pnlFavouritePlayersContainer.DragDrop += PnlFavouritePlayersContainer_DragDrop;
+        }
+
+        private void PnlPlayersContainer_DragEnter(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Copy;
+
+        private void PnlPlayersContainer_DragDrop(object sender, DragEventArgs e)
+        {
+            var playerInfo = (PlayerInfo)e.Data.GetData(typeof(PlayerInfo));
+            pnlPlayersContainer.Controls.Add(playerInfo);
+        }
+
+        private void PnlFavouritePlayersContainer_DragEnter(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Copy;
+
+        private void PnlFavouritePlayersContainer_DragDrop(object sender, DragEventArgs e)
+        {
+            var playerInfo = (PlayerInfo)e.Data.GetData(typeof(PlayerInfo));
+            pnlFavouritePlayersContainer.Controls.Add(playerInfo);
         }
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)

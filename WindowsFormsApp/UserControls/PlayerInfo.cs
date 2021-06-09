@@ -33,8 +33,7 @@ namespace WindowsFormsApp
             PlayerInfo playerInfo = sender as PlayerInfo;
             if (e.Button == MouseButtons.Left)
             {
-                UserControl uc = sender as UserControl;
-                uc.DoDragDrop(uc, DragDropEffects.Copy); 
+                playerInfo.DoDragDrop(playerInfo, DragDropEffects.Copy); 
             }
         }
 
