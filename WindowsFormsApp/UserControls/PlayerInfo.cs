@@ -8,14 +8,13 @@ namespace WindowsFormsApp
     public partial class PlayerInfo : UserControl    
     {
         public Player Player { get; private set; }
-        
+        public bool selected = false;
 
         public PlayerInfo(Player player)
         {
             InitializeComponent();
             Player = player;
-            SetData(player);
-            AllowDrop = true;            
+            SetData(player);            
         }
         private void SetData(Player player)
         {
@@ -23,17 +22,25 @@ namespace WindowsFormsApp
             lblShirtNumber.Text = player.ShirtNumber.ToString();
             lblPosition.Text = player.Position.ToString();
             lblCaptain.Text = player.Captain ? "Captain" : " ";
-            lblFavourite.Text = player.Favourite ? "Favourite" : "No Favourite";
+            lblFavourite.Text = "No Favourite";
             pbPlayer.Image = Repository.GetPicture();
             player.Picture = pbPlayer.Image;
         }
 
         private void PlayersInfo_MouseDown(object sender, MouseEventArgs e)
         {
-            PlayerInfo playerInfo = sender as PlayerInfo;
+            PlayerInfo playerInfo = sender as PlayerInfo;            
             if (e.Button == MouseButtons.Left)
             {
-                playerInfo.DoDragDrop(playerInfo, DragDropEffects.Copy); 
+                playerInfo.DoDragDrop(playerInfo, DragDropEffects.Move);
+                if (selected)
+                {
+                    lblFavourite.Text = "Favourite";
+                }
+                else
+                {
+                    lblFavourite.Text = "No Favourite";
+                }
             }
         }
 

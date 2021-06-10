@@ -14,6 +14,7 @@ namespace WindowsFormsApp
             Player = player;
             SetData(player);
         }
+
         private void SetData(Player player)
         {
             lblName.Text = player.Name;
