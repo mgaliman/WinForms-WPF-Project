@@ -1,12 +1,10 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -118,6 +116,8 @@ namespace WindowsFormsApp
                 Player rankedPlayer = new Player();
                 Stadium stadium = new Stadium();
 
+                TeamEvent teamEvent = new TeamEvent();
+
                 HashSet<Matches> teams = await Repository.LoadJsonPlayers();
 
                 HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
@@ -178,11 +178,11 @@ namespace WindowsFormsApp
                             }
                         }
                     }
-                }                                
-
+                }
 
                 //Players
-                foreach (var playerItem in playerList)
+                IEnumerable<StartingEleven> sortedPlayers = playerList.OrderBy(item => item.ShirtNumber);
+                foreach (var playerItem in sortedPlayers)
                 {
                     player.Name = playerItem.Name;                    
                     player.ShirtNumber = playerItem.ShirtNumber;
@@ -196,26 +196,30 @@ namespace WindowsFormsApp
                             switch (rankedItem.TypeOfEvent)
                             {
                                 case "goal":
-                                    rankedPlayer.Goals++;
+                                    rankedPlayer.Goals++;                                    
                                     break;
                                 case "yellow-card":
-                                    rankedPlayer.YellowCards++;
+                                    rankedPlayer.YellowCards++;                                    
                                     break;
                             }
+                            //Loads only name!!!
+                            teamEvent = rankedItem;
                         }                        
                     }
+
                     if (!(rankedPlayer.Goals == 0 && rankedPlayer.YellowCards == 0))
                     {                        
-                        pnlRankedPlayerContainer.Controls.Add(new RankedPlayerInfo(rankedPlayer));                        
+                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));                        
+                        userRankedPlayerControlsList.Add(teamEvent);
                     }
                     rankedPlayer.Goals = 0;
                     rankedPlayer.YellowCards = 0;
                     pnlPlayersContainer.Controls.Add(new PlayerInfo(player));                    
                 }
 
-                foreach (var rankedPlayerItem in userRankedPlayerControlsList)
+                foreach (var rankedPlayerItem in userRankedPlayerControls)
                 {
-                    //Lista teamEvent-a
+                    pnlRankedPlayerContainer.Controls.Add(rankedPlayerItem);
                 }
 
                 //Stadium
@@ -267,30 +271,18 @@ namespace WindowsFormsApp
             int x = 230;
             int y = 50;
 
+            //Players
             e.Graphics.DrawString("RANKED PLAYERS", Font, Brushes.Black, x, y);
-            //foreach (var rankedPlayerItem in userRankedPlayerControls)
-            //{
-            //    e.Graphics.DrawString("Player: " + rankedPlayerItem.Player.Name + " - - -" +
-            //        " Goals: " + rankedPlayerItem.Player.Goals + " - - -" +
-            //        " Yellow cards: " + rankedPlayerItem.Player.YellowCards,
-            //        Font, Brushes.Black, x, y += 20);
-            //}
+            for (int i = 0; i < userRankedPlayerControlsList.Count; i++)
+            {
+                e.Graphics.DrawString("Player: " + userRankedPlayerControlsList[i].Player + " - - -" +
+                    " Goals: " + userRankedPlayerControlsList[i].Goals + " - - -" +
+                    " Yellow cards: " + userRankedPlayerControlsList[i].YellowCards,
+                    Font, Brushes.Black, x, y += 20);
+            }
 
-            //for (int i = 0; i < userRankedPlayerControlsList.Count; i++)
-            //{
-            //    e.Graphics.DrawString("Player: " + userRankedPlayerControlsList[i].Player + " - - -" +
-            //        " Goals: " + userRankedPlayerControlsList[i].Goals + " - - -" +
-            //        " Yellow cards: " + userRankedPlayerControlsList[i].YellowCards,
-            //        Font, Brushes.Black, x, y += 20);
-            //}
-
+            //Stadiums
             e.Graphics.DrawString("RANKED STADIUMS", Font, Brushes.Black, x, y+=40);
-            //foreach (var rankedStadiumItem in userRankedStadiumControls)
-            //{
-            //    e.Graphics.DrawString("Location: " + rankedStadiumItem.Stadium.Location + " - - -" +
-            //        " Attendance: " + rankedStadiumItem.Stadium.Attendance,
-            //        Font, Brushes.Black, x, y += 20);
-            //}
             for (int i = 0; i < userRankedStadiumControlsList.Count; i++)
             {
                 e.Graphics.DrawString("Location: " + userRankedStadiumControlsList[i].Location + " - - -" +
