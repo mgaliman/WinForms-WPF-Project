@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using DataAccessLayer.Models;
 using System.Globalization;
 using DataAccessLayer.Constants;
-using System.Windows.Forms;
 using System.Drawing;
 
 namespace DataAccessLayer
@@ -17,7 +16,8 @@ namespace DataAccessLayer
     public class Repository
     {
         public const string HR = "hr", EN = "en";
-        public const string PATH = "settings.txt";
+        public const string SETTINGS_PATH = "settings.txt";
+        public const string FAVOURITES_PATH = "favourites.txt";
         public const string DEFAULT_SETTINGS = "Croatian|True|";
         private const char DEL = '|';
 
@@ -30,14 +30,13 @@ namespace DataAccessLayer
                     .Append(DEL)
                     .Append(SettingsFile.gender)
                     .Append(DEL)
-                    .Append(SettingsFile.country)
-                    .AppendLine();
-            File.WriteAllText(PATH, stringBuilder.ToString());
+                    .Append(SettingsFile.country);
+            File.WriteAllText(SETTINGS_PATH, stringBuilder.ToString());
         }
 
         public static List<string> LoadSettings()
         {
-            string[] lines = File.ReadAllLines(PATH);
+            string[] lines = File.ReadAllLines(SETTINGS_PATH);
             List<string> myList = new List<string>();
             foreach (string item in lines)
             {
@@ -52,6 +51,29 @@ namespace DataAccessLayer
             }
             return myList;
         }
+        public static void SaveFavourites(List<string> favourites)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (var item in favourites)
+            {
+                stringBuilder.AppendLine(item);
+            }
+            File.WriteAllText(FAVOURITES_PATH, stringBuilder.ToString());
+        }
+
+        public static HashSet<string> LoadFavourites()
+        {
+            string[] lines = File.ReadAllLines(FAVOURITES_PATH);
+            HashSet<string> myList = new HashSet<string>();
+            foreach (string item in lines)
+            {
+                myList.Add(item);
+            }
+            SettingsFile.favourites = myList;
+            return myList;            
+        }
+        
         public static void SetCulture(string language)
         {
             var culture = new CultureInfo(language);

@@ -10,6 +10,9 @@ namespace WindowsFormsApp
         public StartingEleven Player { get; private set; }
         public bool selected = false;
 
+        //Save property
+        public string FavouriteName { get; set; }
+
         public PlayerInfo(StartingEleven player)
         {
             InitializeComponent();
@@ -18,6 +21,7 @@ namespace WindowsFormsApp
         }
         private void SetData(StartingEleven player)
         {
+            FavouriteName = player.Name;
             lblName.Text = player.Name;
             lblShirtNumber.Text = player.ShirtNumber.ToString();
             lblPosition.Text = player.Position.ToString();

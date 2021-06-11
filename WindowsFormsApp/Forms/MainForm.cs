@@ -19,6 +19,8 @@ namespace WindowsFormsApp
         List<TeamEvent> userRankedPlayerControlsList = new List<TeamEvent>();
         List<Matches> userRankedStadiumControlsList = new List<Matches>();
 
+        HashSet<string> userFavourites = new HashSet<string>();
+
         public MainForm()
         {            
             InitializeComponent();            
@@ -28,7 +30,8 @@ namespace WindowsFormsApp
         private void Init()
         {            
             Repository.LoadSettings();
-            Repository.LoadLanguage();            
+            Repository.LoadLanguage();
+            userFavourites = Repository.LoadFavourites();            
             FillData();
             FillPlayerData();
             InitDnD();            
@@ -65,7 +68,9 @@ namespace WindowsFormsApp
             if (playerInfo.Parent == pnlPlayersContainer)
             {
                 playerInfo.selected = true;
-                pnlFavouritePlayersContainer.Controls.Add(playerInfo); 
+                pnlFavouritePlayersContainer.Controls.Add(playerInfo);
+                //Save favourites
+                userFavourites.Add(playerInfo.FavouriteName);
             }
         }
 
@@ -216,10 +221,30 @@ namespace WindowsFormsApp
                     userPlayerControls.Add(new PlayerInfo(playerItem));                   
                 }
 
+                //Favourites
+                foreach (var favouriteItem in userFavourites)
+                {
+                    foreach (var playerItem in userPlayerControls)
+                    {
+                        if (playerItem.Player.Name == favouriteItem)
+                        {
+                            pnlFavouritePlayersContainer.Controls.Add(playerItem);
+                        }
+                    }
+                }
+
                 //Unranked players
                 foreach (var unrankedplayerItem in userPlayerControls)
                 {
                     pnlPlayersContainer.Controls.Add(unrankedplayerItem);
+                    foreach (var favouriteItem in userFavourites)
+                    {
+                        if (unrankedplayerItem.Player.Name == favouriteItem)
+                        {
+                            pnlFavouritePlayersContainer.Controls.Add(unrankedplayerItem);
+                            lblTest.Text = unrankedplayerItem.Player.Name;
+                        }
+                    }
                 }
 
                 //Ranked players
@@ -291,6 +316,15 @@ namespace WindowsFormsApp
                     Font, Brushes.Black, x, y += 20);
             }
         }
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => Application.Exit();
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            List<string> myList = new List<string>();
+            foreach (var item in userFavourites)
+            {
+                myList.Add(item);
+            }
+            Repository.SaveFavourites(myList);
+            Application.Exit();
+        }
     }
 }
