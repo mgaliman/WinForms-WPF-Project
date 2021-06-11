@@ -12,6 +12,7 @@ namespace WindowsFormsApp
 {
     public partial class MainForm : Form
     {
+        HashSet<PlayerInfo> userPlayerControls = new HashSet<PlayerInfo>();
         HashSet<RankedPlayerInfo> userRankedPlayerControls = new HashSet<RankedPlayerInfo>();
         HashSet<RankedStadiumInfo> userRankedStadiumControls = new HashSet<RankedStadiumInfo>();
 
@@ -112,9 +113,9 @@ namespace WindowsFormsApp
             
             try
             {
-                Player player = new Player();
-                Player rankedPlayer = new Player();
-                Stadium stadium = new Stadium();
+                StartingEleven player = new StartingEleven();
+                TeamEvent rankedPlayer = new TeamEvent();
+                Matches stadium = new Matches();
 
                 TeamEvent teamEvent = new TeamEvent();
 
@@ -124,6 +125,7 @@ namespace WindowsFormsApp
                 HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();                
                 HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
 
+                userPlayerControls = new HashSet<PlayerInfo>();
                 userRankedPlayerControls = new HashSet<RankedPlayerInfo>();
                 userRankedStadiumControls = new HashSet<RankedStadiumInfo>();
 
@@ -182,17 +184,14 @@ namespace WindowsFormsApp
 
                 //Players
                 IEnumerable<StartingEleven> sortedPlayers = playerList.OrderBy(item => item.ShirtNumber);
+
                 foreach (var playerItem in sortedPlayers)
                 {
-                    player.Name = playerItem.Name;                    
-                    player.ShirtNumber = playerItem.ShirtNumber;
-                    player.Position = playerItem.Position;
-                    player.Captain = playerItem.Captain;
                     foreach (var rankedItem in rankedPlayerList)
                     {
-                        if (player.Name == rankedItem.Player)
+                        if (playerItem.Name == rankedItem.Player)
                         {
-                            rankedPlayer.Name = rankedItem.Player;
+                            rankedPlayer.Player = rankedItem.Player;
                             switch (rankedItem.TypeOfEvent)
                             {
                                 case "goal":
@@ -205,7 +204,7 @@ namespace WindowsFormsApp
                             //Loads only name!!!
                             teamEvent = rankedItem;
                         }                        
-                    }
+                    };
 
                     if (!(rankedPlayer.Goals == 0 && rankedPlayer.YellowCards == 0))
                     {                        
@@ -214,9 +213,16 @@ namespace WindowsFormsApp
                     }
                     rankedPlayer.Goals = 0;
                     rankedPlayer.YellowCards = 0;
-                    pnlPlayersContainer.Controls.Add(new PlayerInfo(player));                    
+                    userPlayerControls.Add(new PlayerInfo(playerItem));                   
                 }
 
+                //Unranked players
+                foreach (var unrankedplayerItem in userPlayerControls)
+                {
+                    pnlPlayersContainer.Controls.Add(unrankedplayerItem);
+                }
+
+                //Ranked players
                 foreach (var rankedPlayerItem in userRankedPlayerControls)
                 {
                     pnlRankedPlayerContainer.Controls.Add(rankedPlayerItem);
@@ -227,12 +233,7 @@ namespace WindowsFormsApp
 
                 foreach (var stadiumItem in sortedStadium)
                 {
-                    stadium.Location = stadiumItem.Location;
-                    stadium.Attendance = stadiumItem.Attendance;
-                    stadium.HomeTeam = stadiumItem.HomeTeamCountry;
-                    stadium.AwayTeam = stadiumItem.AwayTeamCountry;
-
-                    userRankedStadiumControls.Add(new RankedStadiumInfo(stadium));
+                    userRankedStadiumControls.Add(new RankedStadiumInfo(stadiumItem));
                     userRankedStadiumControlsList.Add(stadiumItem);
                 }
 

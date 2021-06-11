@@ -32,8 +32,8 @@ namespace WindowsFormsApp
             this.lblName = new System.Windows.Forms.Label();
             this.lblGoals = new System.Windows.Forms.Label();
             this.lblYellowCards = new System.Windows.Forms.Label();
-            this.picture = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
+            this.pbRankedPlayer = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRankedPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -63,27 +63,27 @@ namespace WindowsFormsApp
             this.lblYellowCards.TabIndex = 3;
             this.lblYellowCards.Text = "cards";
             // 
-            // picture
+            // pbRankedPlayer
             // 
-            this.picture.Location = new System.Drawing.Point(213, 5);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(80, 80);
-            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture.TabIndex = 5;
-            this.picture.TabStop = false;
+            this.pbRankedPlayer.Location = new System.Drawing.Point(213, 5);
+            this.pbRankedPlayer.Name = "pbRankedPlayer";
+            this.pbRankedPlayer.Size = new System.Drawing.Size(80, 80);
+            this.pbRankedPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRankedPlayer.TabIndex = 5;
+            this.pbRankedPlayer.TabStop = false;
             // 
             // RankedPlayerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LawnGreen;
-            this.Controls.Add(this.picture);
+            this.Controls.Add(this.pbRankedPlayer);
             this.Controls.Add(this.lblYellowCards);
             this.Controls.Add(this.lblGoals);
             this.Controls.Add(this.lblName);
             this.Name = "RankedPlayerInfo";
             this.Size = new System.Drawing.Size(296, 88);
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRankedPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,6 +94,6 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblGoals;
         private System.Windows.Forms.Label lblYellowCards;
-        private System.Windows.Forms.PictureBox picture;
+        private System.Windows.Forms.PictureBox pbRankedPlayer;
     }
 }

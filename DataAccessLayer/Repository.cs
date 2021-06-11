@@ -10,6 +10,7 @@ using DataAccessLayer.Models;
 using System.Globalization;
 using DataAccessLayer.Constants;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace DataAccessLayer
 {
@@ -32,7 +33,7 @@ namespace DataAccessLayer
                     .Append(SettingsFile.country)
                     .AppendLine();
             File.WriteAllText(PATH, stringBuilder.ToString());
-        }        
+        }
 
         public static List<string> LoadSettings()
         {
@@ -173,16 +174,9 @@ namespace DataAccessLayer
                 }
             }
         }
-        public static System.Drawing.Bitmap GetPicture() => MyResources.defaultUser;
-
-        public static T GetControl<T>(Control parent)
+        public static Image GetPicture()
         {
-            foreach (var ctrl in parent.Controls)
-            {
-                if (ctrl is T t)
-                    return t;
-            }
-            return default;
+            return MyResources.defaultUser;
         }
     }
 }

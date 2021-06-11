@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using Newtonsoft.Json;
 
 namespace DataAccessLayer.Models
 {
     public partial class Matches
     {
+        //Stadium
         [JsonProperty("location")]
         public string Location { get; set; }
 
@@ -31,17 +32,25 @@ namespace DataAccessLayer.Models
         public TeamStatistics AwayTeamStatistics { get; set; }
     }
 
+    //Ranked player
     public partial class TeamEvent
     {
+        private int goals;
+
         [JsonProperty("type_of_event")]
         public string TypeOfEvent { get; set; }
 
         [JsonProperty("player")]
         public string Player { get; set; }
-        public int Goals { get; set; }
+
+        public int Goals { get => goals; set => goals = value; }
+
         public int YellowCards { get; set; }
+
+        public Image RankedPicture { get; set; }
     }
 
+    //Country
     public partial class TeamStatistics
     {
         [JsonProperty("country")]
@@ -54,6 +63,7 @@ namespace DataAccessLayer.Models
         public List<StartingEleven> Substitutes { get; set; }
     }
 
+    //Player
     public partial class StartingEleven
     {
         [JsonProperty("name")]
@@ -67,6 +77,10 @@ namespace DataAccessLayer.Models
 
         [JsonProperty("position")]
         public Position Position { get; set; }
+
+        public bool Favourite { get; set; }
+
+        public Image Picture { get; set; }
 
         public override bool Equals(object obj)
         {

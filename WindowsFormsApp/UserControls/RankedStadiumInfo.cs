@@ -8,21 +8,21 @@ namespace WindowsFormsApp
 {
     public partial class RankedStadiumInfo : UserControl
     {
-        public Stadium Stadium { get; private set; }
+        public Matches Stadium { get; private set; }
 
-        public RankedStadiumInfo(Stadium stadium)
+        public RankedStadiumInfo(Matches stadium)
         {
             InitializeComponent();
             Stadium = stadium;
             SetData(Stadium);
         }
 
-        private void SetData(Stadium stadium)
+        private void SetData(Matches stadium)
         {
             lblLocation.Text = stadium.Location;
             lblVisitors.Text = stadium.Attendance.ToString();
-            lblHomeTeam.Text = stadium.HomeTeam;
-            lblAwayTeam.Text = stadium.AwayTeam;
+            lblHomeTeam.Text = stadium.HomeTeamCountry;
+            lblAwayTeam.Text = stadium.AwayTeamCountry;
         }
     }
 }

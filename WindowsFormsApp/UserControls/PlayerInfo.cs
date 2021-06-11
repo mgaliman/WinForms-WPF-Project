@@ -7,16 +7,16 @@ namespace WindowsFormsApp
 {
     public partial class PlayerInfo : UserControl    
     {
-        public Player Player { get; private set; }
+        public StartingEleven Player { get; private set; }
         public bool selected = false;
 
-        public PlayerInfo(Player player)
+        public PlayerInfo(StartingEleven player)
         {
             InitializeComponent();
             Player = player;
             SetData(player);            
         }
-        private void SetData(Player player)
+        private void SetData(StartingEleven player)
         {
             lblName.Text = player.Name;
             lblShirtNumber.Text = player.ShirtNumber.ToString();
