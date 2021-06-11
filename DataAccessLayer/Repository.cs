@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using DataAccessLayer.Constants;
+using DataAccessLayer.Models;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using DataAccessLayer.Models;
-using System.Globalization;
-using DataAccessLayer.Constants;
-using System.Drawing;
 
 namespace DataAccessLayer
 {
@@ -51,7 +51,7 @@ namespace DataAccessLayer
             }
             return myList;
         }
-        public static void SaveFavourites(List<string> favourites)
+        public static void SaveFavourites(HashSet<string> favourites)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -71,9 +71,9 @@ namespace DataAccessLayer
                 myList.Add(item);
             }
             SettingsFile.favourites = myList;
-            return myList;            
+            return myList;
         }
-        
+
         public static void SetCulture(string language)
         {
             var culture = new CultureInfo(language);

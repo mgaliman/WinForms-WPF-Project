@@ -24,7 +24,7 @@ namespace WindowsFormsApp
             {
                 Application.Run(new MainForm());
             }
-            
+
         }
     }
 }

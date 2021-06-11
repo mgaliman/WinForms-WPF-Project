@@ -1,8 +1,6 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
-using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -17,7 +15,7 @@ namespace WindowsFormsApp
         }
 
         private void Init()
-        {           
+        {
             Repository.LoadSettings();
         }
 
@@ -31,7 +29,7 @@ namespace WindowsFormsApp
                 SettingsFile.country = String.Empty;
                 Repository.SaveSettings();
                 new MainForm().Show();
-            }            
+            }
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -60,14 +58,14 @@ namespace WindowsFormsApp
                 RefreshForm();
                 LoadGender();
             }
-        }    
+        }
 
         private void Settings_Load(object sender, EventArgs e)
         {
             Repository.LoadSettings();
             Repository.LoadLanguage();
             RefreshForm();
-            LoadGender();          
+            LoadGender();
         }
 
         private void LoadGender()

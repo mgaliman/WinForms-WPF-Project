@@ -22,26 +22,26 @@ namespace WindowsFormsApp
         HashSet<string> userFavourites = new HashSet<string>();
 
         public MainForm()
-        {            
-            InitializeComponent();            
+        {
+            InitializeComponent();
             Init();
         }
 
         private void Init()
-        {            
+        {
             Repository.LoadSettings();
             Repository.LoadLanguage();
-            userFavourites = Repository.LoadFavourites();            
+            userFavourites = Repository.LoadFavourites();
             FillData();
             FillPlayerData();
-            InitDnD();            
+            InitDnD();
         }
 
         private void InitDnD()
         {
             //Other players
             pnlPlayersContainer.DragEnter += PnlContainers_DragEnter;
-            pnlPlayersContainer.DragDrop += PnlPlayersContainer_DragDrop;            
+            pnlPlayersContainer.DragDrop += PnlPlayersContainer_DragDrop;
 
             //Favourite players
             pnlFavouritePlayersContainer.DragEnter += PnlContainers_DragEnter;
@@ -53,11 +53,13 @@ namespace WindowsFormsApp
         private void PnlPlayersContainer_DragDrop(object sender, DragEventArgs e)
         {
             var playerInfo = (PlayerInfo)e.Data.GetData(typeof(PlayerInfo));
-            
+
             if (playerInfo.Parent == pnlFavouritePlayersContainer)
             {
                 playerInfo.selected = false;
                 pnlPlayersContainer.Controls.Add(playerInfo);
+
+                userFavourites.Remove(playerInfo.FavouriteName);
             }
         }
 
@@ -65,11 +67,11 @@ namespace WindowsFormsApp
         {
             var playerInfo = (PlayerInfo)e.Data.GetData(typeof(PlayerInfo));
 
-            if (playerInfo.Parent == pnlPlayersContainer)
+            if (playerInfo.Parent == pnlPlayersContainer && (pnlFavouritePlayersContainer.Controls.Count) < 3)
             {
                 playerInfo.selected = true;
                 pnlFavouritePlayersContainer.Controls.Add(playerInfo);
-                //Save favourites
+
                 userFavourites.Add(playerInfo.FavouriteName);
             }
         }
@@ -115,7 +117,7 @@ namespace WindowsFormsApp
             pnlPlayersContainer.Controls.Clear();
             pnlRankedPlayerContainer.Controls.Clear();
             pnlRankedStadiumContainer.Controls.Clear();
-            
+
             try
             {
                 StartingEleven player = new StartingEleven();
@@ -127,7 +129,7 @@ namespace WindowsFormsApp
                 HashSet<Matches> teams = await Repository.LoadJsonPlayers();
 
                 HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
-                HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();                
+                HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();
                 HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
 
                 userPlayerControls = new HashSet<PlayerInfo>();
@@ -140,9 +142,9 @@ namespace WindowsFormsApp
                 lblTest.Text = SettingsFile.country;
 
                 foreach (var players in teams)
-                {                    
+                {
                     if (players.HomeTeamStatistics.Country == SettingsFile.country)
-                    {                        
+                    {
                         rankedStadiumList.Add(players);
                         foreach (var playerItem in players.HomeTeamStatistics.StartingEleven)
                         {
@@ -150,7 +152,7 @@ namespace WindowsFormsApp
 
                             foreach (var rankedItem in players.HomeTeamEvents)
                             {
-                                rankedPlayerList.Add(rankedItem);     
+                                rankedPlayerList.Add(rankedItem);
                             }
                         }
                         foreach (var playerItem in players.HomeTeamStatistics.Substitutes)
@@ -159,9 +161,9 @@ namespace WindowsFormsApp
 
                             foreach (var rankedItem in players.HomeTeamEvents)
                             {
-                                rankedPlayerList.Add(rankedItem);                                                               
-                            }                            
-                        }                        
+                                rankedPlayerList.Add(rankedItem);
+                            }
+                        }
                     }
                     if (players.AwayTeamStatistics.Country == SettingsFile.country)
                     {
@@ -200,37 +202,25 @@ namespace WindowsFormsApp
                             switch (rankedItem.TypeOfEvent)
                             {
                                 case "goal":
-                                    rankedPlayer.Goals++;                                    
+                                    rankedPlayer.Goals++;
                                     break;
                                 case "yellow-card":
-                                    rankedPlayer.YellowCards++;                                    
+                                    rankedPlayer.YellowCards++;
                                     break;
                             }
                             //Loads only name!!!
                             teamEvent = rankedItem;
-                        }                        
+                        }
                     };
 
                     if (!(rankedPlayer.Goals == 0 && rankedPlayer.YellowCards == 0))
-                    {                        
-                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));                        
+                    {
+                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));
                         userRankedPlayerControlsList.Add(teamEvent);
                     }
                     rankedPlayer.Goals = 0;
                     rankedPlayer.YellowCards = 0;
-                    userPlayerControls.Add(new PlayerInfo(playerItem));                   
-                }
-
-                //Favourites
-                foreach (var favouriteItem in userFavourites)
-                {
-                    foreach (var playerItem in userPlayerControls)
-                    {
-                        if (playerItem.Player.Name == favouriteItem)
-                        {
-                            pnlFavouritePlayersContainer.Controls.Add(playerItem);
-                        }
-                    }
+                    userPlayerControls.Add(new PlayerInfo(playerItem));
                 }
 
                 //Unranked players
@@ -239,10 +229,11 @@ namespace WindowsFormsApp
                     pnlPlayersContainer.Controls.Add(unrankedplayerItem);
                     foreach (var favouriteItem in userFavourites)
                     {
+                        //Favourites
                         if (unrankedplayerItem.Player.Name == favouriteItem)
                         {
+                            unrankedplayerItem.selected = true;
                             pnlFavouritePlayersContainer.Controls.Add(unrankedplayerItem);
-                            lblTest.Text = unrankedplayerItem.Player.Name;
                         }
                     }
                 }
@@ -264,7 +255,7 @@ namespace WindowsFormsApp
 
                 foreach (var rankedStadiumItem in userRankedStadiumControls)
                 {
-                    pnlRankedStadiumContainer.Controls.Add(rankedStadiumItem);                    
+                    pnlRankedStadiumContainer.Controls.Add(rankedStadiumItem);
                 }
             }
             catch (Exception ex)
@@ -308,7 +299,7 @@ namespace WindowsFormsApp
             }
 
             //Stadiums
-            e.Graphics.DrawString("RANKED STADIUMS", Font, Brushes.Black, x, y+=40);
+            e.Graphics.DrawString("RANKED STADIUMS", Font, Brushes.Black, x, y += 40);
             for (int i = 0; i < userRankedStadiumControlsList.Count; i++)
             {
                 e.Graphics.DrawString("Location: " + userRankedStadiumControlsList[i].Location + " - - -" +
@@ -318,12 +309,8 @@ namespace WindowsFormsApp
         }
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            List<string> myList = new List<string>();
-            foreach (var item in userFavourites)
-            {
-                myList.Add(item);
-            }
-            Repository.SaveFavourites(myList);
+            Repository.SaveFavourites(userFavourites);
+
             Application.Exit();
         }
     }

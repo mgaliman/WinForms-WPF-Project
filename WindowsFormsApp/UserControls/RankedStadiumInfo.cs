@@ -1,7 +1,4 @@
-﻿using DataAccessLayer;
-using DataAccessLayer.Models;
-using System;
-using System.ComponentModel;
+﻿using DataAccessLayer.Models;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp
