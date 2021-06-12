@@ -1,17 +1,30 @@
-﻿namespace DataAccessLayer.Constants
+﻿using System.IO;
+
+namespace DataAccessLayer.Constants
 {
     public static class ApiConstants
     {
         //File
-        public const string FemaleGroupResultsLocation = "women_group_results.json";
-        public const string FemaleMatchesLocation = "women_matches.json";
-        public const string FemaleResultsLocation = "women_results.json";
-        public const string FemaleTeamsLocation = "women_teams.json";
+        //public const string FemaleGroupResultsLocation = "women_group_results.json";
+        //public const string FemaleMatchesLocation = "women_matches.json";
+        //public const string FemaleResultsLocation = "women_results.json";
+        //public const string FemaleTeamsLocation = "women_teams.json";
 
-        public const string MaleGroupResultsLocation = "men_group_results.json";
-        public const string MaleMatchesLocation = "men_matches.json";
-        public const string MaleResultsLocation = "men_results.json";
-        public const string MaleTeamsLocation = "men_teams.json";
+        //public const string MaleGroupResultsLocation = "men_group_results.json";
+        //public const string MaleMatchesLocation = "men_matches.json";
+        //public const string MaleResultsLocation = "men_results.json";
+        //public const string MaleTeamsLocation = "men_teams.json";
+
+        public static string FemaleGroupResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_group_results.json");
+        public static string FemaleMatchesLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_matches.json");
+        public static string FemaleResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_results.json");
+        public static string FemaleTeamsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_teams.json");
+
+        public static string MaleGroupResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/men_group_results.json");
+        public static string MaleMatchesLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/men_matches.json");
+        public static string MaleResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/men_results.json");
+        public static string MaleTeamsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/men_teams.json");
+
 
         //Web
         public const string FemaleTeamsWebLocation = "https://worldcup.sfg.io/teams/results";

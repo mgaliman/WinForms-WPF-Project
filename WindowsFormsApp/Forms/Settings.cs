@@ -87,7 +87,34 @@ namespace WindowsFormsApp
 
         private void Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Dispose();
+                Application.Exit();                
+            }
+            else
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            
+            if (keyData == Keys.Escape)
+            {
+                DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Hide();
+                    new MainForm().Show();
+                }
+                return true;
+            }
+
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

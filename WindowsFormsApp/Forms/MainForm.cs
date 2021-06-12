@@ -314,9 +314,27 @@ namespace WindowsFormsApp
         }
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Repository.SaveFavourites(userFavourites);
-
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Repository.SaveFavourites(userFavourites);
+                Dispose();
+                Application.Exit();
+            }
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Dispose();
+                    Application.Exit();
+                    return true;
+                }
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }
