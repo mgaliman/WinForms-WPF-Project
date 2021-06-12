@@ -15,9 +15,10 @@ namespace WindowsFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (!File.Exists(Repository.SETTINGS_PATH))
+            if (!File.Exists(Repository.SETTINGS_PATH) || !File.Exists(Repository.FAVOURITES_PATH))
             {
                 File.WriteAllText(Repository.SETTINGS_PATH, Repository.DEFAULT_SETTINGS);
+                File.Create(Repository.FAVOURITES_PATH);
                 Application.Run(new Settings());
             }
             else

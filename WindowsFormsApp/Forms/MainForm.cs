@@ -12,13 +12,11 @@ namespace WindowsFormsApp
 {
     public partial class MainForm : Form
     {
-        HashSet<PlayerInfo> userPlayerControls = new HashSet<PlayerInfo>();
-        HashSet<RankedPlayerInfo> userRankedPlayerControls = new HashSet<RankedPlayerInfo>();
-        HashSet<RankedStadiumInfo> userRankedStadiumControls = new HashSet<RankedStadiumInfo>();
-
+        //Print variables
         List<TeamEvent> userRankedPlayerControlsList = new List<TeamEvent>();
         List<Matches> userRankedStadiumControlsList = new List<Matches>();
 
+        //Favourite List
         HashSet<string> userFavourites = new HashSet<string>();
 
         public MainForm()
@@ -80,6 +78,7 @@ namespace WindowsFormsApp
         {
             Hide();
             Repository.SaveSettings();
+            Repository.SaveFavourites(userFavourites);
             new Settings().Show();
         }
 
@@ -117,29 +116,32 @@ namespace WindowsFormsApp
             pnlPlayersContainer.Controls.Clear();
             pnlRankedPlayerContainer.Controls.Clear();
             pnlRankedStadiumContainer.Controls.Clear();
+            pnlFavouritePlayersContainer.Controls.Clear();
 
             try
             {
+                HashSet<Matches> teams = await Repository.LoadJsonPlayers();
+                lblTest.Text = SettingsFile.country;
+
                 StartingEleven player = new StartingEleven();
                 TeamEvent rankedPlayer = new TeamEvent();
                 Matches stadium = new Matches();
 
                 TeamEvent teamEvent = new TeamEvent();
-
-                HashSet<Matches> teams = await Repository.LoadJsonPlayers();
-
+                
                 HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
                 HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();
                 HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
 
-                userPlayerControls = new HashSet<PlayerInfo>();
-                userRankedPlayerControls = new HashSet<RankedPlayerInfo>();
-                userRankedStadiumControls = new HashSet<RankedStadiumInfo>();
+                HashSet<PlayerInfo> userPlayerControls = new HashSet<PlayerInfo>();
+                HashSet<RankedPlayerInfo> userRankedPlayerControls = new HashSet<RankedPlayerInfo>();
+                HashSet<RankedStadiumInfo> userRankedStadiumControls = new HashSet<RankedStadiumInfo>();
 
                 userRankedPlayerControlsList = new List<TeamEvent>();
                 userRankedStadiumControlsList = new List<Matches>();
 
-                lblTest.Text = SettingsFile.country;
+                
+
 
                 foreach (var players in teams)
                 {
@@ -203,9 +205,11 @@ namespace WindowsFormsApp
                             {
                                 case "goal":
                                     rankedPlayer.Goals++;
+                                    teamEvent.Goals++;
                                     break;
                                 case "yellow-card":
                                     rankedPlayer.YellowCards++;
+                                    teamEvent.YellowCards++;
                                     break;
                             }
                             //Loads only name!!!
@@ -227,9 +231,9 @@ namespace WindowsFormsApp
                 foreach (var unrankedplayerItem in userPlayerControls)
                 {
                     pnlPlayersContainer.Controls.Add(unrankedplayerItem);
+                    //Favourites
                     foreach (var favouriteItem in userFavourites)
                     {
-                        //Favourites
                         if (unrankedplayerItem.Player.Name == favouriteItem)
                         {
                             unrankedplayerItem.selected = true;
@@ -239,6 +243,7 @@ namespace WindowsFormsApp
                 }
 
                 //Ranked players
+                //IEnumerable<RankedPlayerInfo> sortedRankedPlayer = userRankedPlayerControls.OrderBy(Item => -Item.Player.Goals);
                 foreach (var rankedPlayerItem in userRankedPlayerControls)
                 {
                     pnlRankedPlayerContainer.Controls.Add(rankedPlayerItem);

@@ -35,15 +35,13 @@ namespace DataAccessLayer.Models
     //Ranked player
     public partial class TeamEvent
     {
-        private int goals;
-
         [JsonProperty("type_of_event")]
         public string TypeOfEvent { get; set; }
 
         [JsonProperty("player")]
         public string Player { get; set; }
 
-        public int Goals { get => goals; set => goals = value; }
+        public int Goals { get; set; }
 
         public int YellowCards { get; set; }
 

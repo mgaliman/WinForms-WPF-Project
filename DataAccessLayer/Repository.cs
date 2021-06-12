@@ -15,9 +15,9 @@ namespace DataAccessLayer
 {
     public class Repository
     {
-        public const string HR = "hr", EN = "en";
-        public const string SETTINGS_PATH = "settings.txt";
-        public const string FAVOURITES_PATH = "favourites.txt";
+        public const string HR = "hr", EN = "en";        
+        public static string SETTINGS_PATH = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Settings/settings.txt");
+        public static string FAVOURITES_PATH = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Settings/favourites.txt");
         public const string DEFAULT_SETTINGS = "Croatian|True|";
         private const char DEL = '|';
 
