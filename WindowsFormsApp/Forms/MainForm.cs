@@ -321,7 +321,13 @@ namespace WindowsFormsApp
                 Dispose();
                 Application.Exit();
             }
+            else
+            {
+                e.Cancel = true;
+                return;
+            }
         }
+
         protected override bool ProcessDialogKey(Keys keyData)
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
@@ -330,9 +336,9 @@ namespace WindowsFormsApp
                 if (result == DialogResult.Yes)
                 {
                     Dispose();
-                    Application.Exit();
-                    return true;
+                    Application.Exit();                    
                 }
+                return true;
             }
             return base.ProcessDialogKey(keyData);
         }

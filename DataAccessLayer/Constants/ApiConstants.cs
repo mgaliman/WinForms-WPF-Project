@@ -5,16 +5,6 @@ namespace DataAccessLayer.Constants
     public static class ApiConstants
     {
         //File
-        //public const string FemaleGroupResultsLocation = "women_group_results.json";
-        //public const string FemaleMatchesLocation = "women_matches.json";
-        //public const string FemaleResultsLocation = "women_results.json";
-        //public const string FemaleTeamsLocation = "women_teams.json";
-
-        //public const string MaleGroupResultsLocation = "men_group_results.json";
-        //public const string MaleMatchesLocation = "men_matches.json";
-        //public const string MaleResultsLocation = "men_results.json";
-        //public const string MaleTeamsLocation = "men_teams.json";
-
         public static string FemaleGroupResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_group_results.json");
         public static string FemaleMatchesLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_matches.json");
         public static string FemaleResultsLocation = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Json/women_results.json");

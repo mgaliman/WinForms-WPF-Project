@@ -1,1 +1,1 @@
-Croatian|False|Korea Republic
+Croatian|True|Canada

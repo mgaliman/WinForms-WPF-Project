@@ -101,9 +101,8 @@ namespace WindowsFormsApp
         }
 
         protected override bool ProcessDialogKey(Keys keyData)
-        {
-            
-            if (keyData == Keys.Escape)
+        {            
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
                 DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -113,7 +112,6 @@ namespace WindowsFormsApp
                 }
                 return true;
             }
-
             return base.ProcessDialogKey(keyData);
         }
     }

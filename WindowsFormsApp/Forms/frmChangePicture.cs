@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp
@@ -26,8 +27,8 @@ namespace WindowsFormsApp
             OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "Pictures|*.bmp;*.jpg;*.jfif;*.jpeg;*.png;|All files|*.*",
-                InitialDirectory = Application.StartupPath
-            };
+                InitialDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Pictures")
+        };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
