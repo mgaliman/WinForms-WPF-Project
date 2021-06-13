@@ -1,0 +1,78 @@
+﻿<Window x:Name="WindowSettings" x:Class="WindowsPresentationFoundation.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsPresentationFoundation"
+        mc:Ignorable="d"
+        Title="Settings" Height="500" Width="800" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="background" StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Green" />
+                <GradientStop Offset="0" Color="LawnGreen" />
+                <GradientStop Offset="1" Color="LightSeaGreen" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <EventTrigger x:Key="animation" RoutedEvent="Grid.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation 
+                                    Storyboard.TargetProperty="Background.GradientStops[1].Offset"
+                                    To="1"  
+                                    Duration="0:0:5" 
+                                    AutoReverse="True" 
+                                    RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource ResourceKey=background}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label x:Name="Language" Grid.Row="2" Grid.Column="2" Margin="5" Content="Lagnuage:"/>
+        <Button x:Name="btnLanguage" Grid.Row="2" Grid.Column="3" Width="100" Height="30" Content="Croatian" Click="BtnLanguage_Click"/>
+
+        <Label x:Name="Championship" Grid.Row="4" Grid.Column="2" Margin="5" Content="Championship:"/>
+        <RadioButton x:Name="rbtnFemale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="10" Content="Female"/>
+        <RadioButton x:Name="rbtnMale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="90 10 10 10" Content="Male"/>
+        <Label x:Name="Resolution" Grid.Row="7" Grid.Column="2" Margin="5" Content="Resolution:"/>
+        <Button x:Name="btn480p" Grid.Row="6" Grid.Column="3" Width="100" Height="30" Content="800x500" Click="Btn480p_Click"/>
+        <Button x:Name="btn720p" Grid.Row="7" Grid.Column="3" Width="100" Height="30" Content="12800x720" Click="Btn720p_Click"/>
+        <Button x:Name="btn1080p" Grid.Row="8" Grid.Column="3" Width="100" Height="30" Content="1920x1080" Click="Btn1080p_Click"/>
+
+        <Button x:Name="btnAccept" Grid.Row="10" Grid.Column="2" Width="120" Height="30" Content="Accept" Click="BtnAccept_Click"/>
+        <Button x:Name="btnCancel" Grid.Row="10" Grid.Column="3" Width="120" Height="30" Content="Cancel" Click="BtnCancel_Click"/>
+
+        <Grid.Triggers>
+            <StaticResourceExtension ResourceKey="animation"/>
+        </Grid.Triggers>
+    </Grid>
+</Window>

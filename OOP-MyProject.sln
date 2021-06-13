@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{3F5391E6-C117-4821-AA1E-F9BE0EA34142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsPresentationFoundation", "WindowsPresentationFoundation\WindowsPresentationFoundation.csproj", "{F714BB12-5FD0-470F-85D9-B2B7FB6ED306}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3F5391E6-C117-4821-AA1E-F9BE0EA34142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F5391E6-C117-4821-AA1E-F9BE0EA34142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F5391E6-C117-4821-AA1E-F9BE0EA34142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F714BB12-5FD0-470F-85D9-B2B7FB6ED306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F714BB12-5FD0-470F-85D9-B2B7FB6ED306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F714BB12-5FD0-470F-85D9-B2B7FB6ED306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F714BB12-5FD0-470F-85D9-B2B7FB6ED306}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

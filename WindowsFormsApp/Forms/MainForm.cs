@@ -268,7 +268,7 @@ namespace WindowsFormsApp
                 MessageBox.Show(ex.Message);
                 lblInfo.Text = ex.Message;
             }
-            lblInfo.Text = $"Players: {pnlPlayersContainer.Controls.Count}";
+            lblInfo.Text = "Data is fatched!";
         }
 
         private void MiChoosePrintType_Click(object sender, EventArgs e)
