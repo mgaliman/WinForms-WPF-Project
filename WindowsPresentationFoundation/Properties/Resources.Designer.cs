@@ -22,7 +22,7 @@ namespace WindowsPresentationFoundation.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WindowsPresentationFoundation.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsPresentationFoundation.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace WindowsPresentationFoundation.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WindowsPresentationFoundation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Accept.
         /// </summary>
-        internal static string btnAccept {
+        public static string btnAccept {
             get {
                 return ResourceManager.GetString("btnAccept", resourceCulture);
             }
@@ -72,16 +72,25 @@ namespace WindowsPresentationFoundation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string btnCancel {
+        public static string btnCancel {
             get {
                 return ResourceManager.GetString("btnCancel", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Croatian.
+        /// </summary>
+        public static string btnLanguage {
+            get {
+                return ResourceManager.GetString("btnLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Championship:.
         /// </summary>
-        internal static string Championship {
+        public static string Championship {
             get {
                 return ResourceManager.GetString("Championship", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace WindowsPresentationFoundation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        internal static string Language {
+        public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace WindowsPresentationFoundation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Female.
         /// </summary>
-        internal static string rbtnFemale {
+        public static string rbtnFemale {
             get {
                 return ResourceManager.GetString("rbtnFemale", resourceCulture);
             }
@@ -108,16 +117,25 @@ namespace WindowsPresentationFoundation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Male.
         /// </summary>
-        internal static string rbtnMale {
+        public static string rbtnMale {
             get {
                 return ResourceManager.GetString("rbtnMale", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resolution:.
+        /// </summary>
+        public static string Resolution {
+            get {
+                return ResourceManager.GetString("Resolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WindowSetting.
         /// </summary>
-        internal static string WindowSettings {
+        public static string WindowSettings {
             get {
                 return ResourceManager.GetString("WindowSettings", resourceCulture);
             }

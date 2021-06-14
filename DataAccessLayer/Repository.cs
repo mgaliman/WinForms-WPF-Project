@@ -30,7 +30,9 @@ namespace DataAccessLayer
                     .Append(DEL)
                     .Append(SettingsFile.gender)
                     .Append(DEL)
-                    .Append(SettingsFile.country);
+                    .Append(SettingsFile.country)
+                    .Append(DEL)
+                    .Append(SettingsFile.versusCountry);
             File.WriteAllText(SETTINGS_PATH, stringBuilder.ToString());
         }
 
@@ -44,10 +46,12 @@ namespace DataAccessLayer
                 myList.Add(data[0]);
                 myList.Add(data[1]);
                 myList.Add(data[2]);
+                myList.Add(data[3]);
 
                 SettingsFile.language = data[0];
                 SettingsFile.gender = Convert.ToBoolean(data[1]);
                 SettingsFile.country = data[2];
+                SettingsFile.versusCountry = data[3];
             }
             return myList;
         }

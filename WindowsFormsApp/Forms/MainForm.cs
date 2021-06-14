@@ -120,7 +120,7 @@ namespace WindowsFormsApp
 
             try
             {
-                HashSet<Matches> teams = await Repository.LoadJsonPlayers();
+                HashSet<Matches> matches = await Repository.LoadJsonPlayers();
                 lblTest.Text = SettingsFile.country;
 
                 StartingEleven player = new StartingEleven();
@@ -143,7 +143,7 @@ namespace WindowsFormsApp
                 
 
 
-                foreach (var players in teams)
+                foreach (var players in matches)
                 {
                     if (players.HomeTeamStatistics.Country == SettingsFile.country)
                     {

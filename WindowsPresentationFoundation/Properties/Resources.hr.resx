@@ -118,24 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAccept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Prihvati</value>
   </data>
   <data name="btnCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Prekini</value>
+  </data>
+  <data name="btnLanguage" xml:space="preserve">
+    <value>Engleski</value>
   </data>
   <data name="Championship" xml:space="preserve">
-    <value>Vhampionship:</value>
+    <value>Prvenstvo:</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>LanguageČ</value>
+    <value>Jezik:</value>
   </data>
   <data name="rbtnFemale" xml:space="preserve">
-    <value>Female</value>
+    <value>Žensko</value>
   </data>
   <data name="rbtnMale" xml:space="preserve">
-    <value>Male</value>
+    <value>Muško</value>
+  </data>
+  <data name="Resolution" xml:space="preserve">
+    <value>Rezolucija:</value>
   </data>
   <data name="WindowSettings" xml:space="preserve">
-    <value>WindowSetting</value>
+    <value>Postavke</value>
   </data>
 </root>

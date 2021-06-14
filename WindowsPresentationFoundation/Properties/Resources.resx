@@ -123,6 +123,9 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="btnLanguage" xml:space="preserve">
+    <value>Croatian</value>
+  </data>
   <data name="Championship" xml:space="preserve">
     <value>Championship:</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="rbtnMale" xml:space="preserve">
     <value>Male</value>
+  </data>
+  <data name="Resolution" xml:space="preserve">
+    <value>Resolution:</value>
   </data>
   <data name="WindowSettings" xml:space="preserve">
     <value>WindowSetting</value>

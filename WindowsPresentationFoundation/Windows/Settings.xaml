@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lang="clr-namespace:WindowsPresentationFoundation.Properties"
         xmlns:local="clr-namespace:WindowsPresentationFoundation"
         mc:Ignorable="d"
         Title="Settings" Height="500" Width="800" WindowStartupLocation="CenterScreen"
@@ -56,20 +57,21 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Label x:Name="Language" Grid.Row="2" Grid.Column="2" Margin="5" Content="Lagnuage:"/>
-        <Button x:Name="btnLanguage" Grid.Row="2" Grid.Column="3" Width="100" Height="30" Content="Croatian" Click="BtnLanguage_Click"/>
 
-        <Label x:Name="Championship" Grid.Row="4" Grid.Column="2" Margin="5" Content="Championship:"/>
-        <RadioButton x:Name="rbtnFemale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="10" Content="Female"/>
-        <RadioButton x:Name="rbtnMale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="90 10 10 10" Content="Male"/>
-        <Label x:Name="Resolution" Grid.Row="7" Grid.Column="2" Margin="5" Content="Resolution:"/>
+        <Label x:Name="Language" Grid.Row="2" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Language}"/>
+        <Button x:Name="btnLanguage" Grid.Row="2" Grid.Column="3" Width="100" Height="30" Content="{x:Static lang:Resources.btnLanguage}" Click="BtnLanguage_Click"/>
+
+        <Label x:Name="Championship" Grid.Row="4" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Championship}"/>
+        <RadioButton x:Name="rbtnFemale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="10" Content="{x:Static lang:Resources.rbtnFemale}"/>
+        <RadioButton x:Name="rbtnMale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="90 10 10 10" Content="{x:Static lang:Resources.rbtnMale}"/>
+        
+        <Label x:Name="Resolution" Grid.Row="7" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Resolution}"/>
         <Button x:Name="btn480p" Grid.Row="6" Grid.Column="3" Width="100" Height="30" Content="800x500" Click="Btn480p_Click"/>
         <Button x:Name="btn720p" Grid.Row="7" Grid.Column="3" Width="100" Height="30" Content="12800x720" Click="Btn720p_Click"/>
         <Button x:Name="btn1080p" Grid.Row="8" Grid.Column="3" Width="100" Height="30" Content="1920x1080" Click="Btn1080p_Click"/>
 
-        <Button x:Name="btnAccept" Grid.Row="10" Grid.Column="2" Width="120" Height="30" Content="Accept" Click="BtnAccept_Click"/>
-        <Button x:Name="btnCancel" Grid.Row="10" Grid.Column="3" Width="120" Height="30" Content="Cancel" Click="BtnCancel_Click"/>
+        <Button x:Name="btnAccept" Grid.Row="10" Grid.Column="2" Width="120" Height="30" Content="{x:Static lang:Resources.btnAccept}" Click="BtnAccept_Click"/>
+        <Button x:Name="btnCancel" Grid.Row="10" Grid.Column="3" Width="120" Height="30" Content="{x:Static lang:Resources.btnCancel}" Click="BtnCancel_Click"/>
 
         <Grid.Triggers>
             <StaticResourceExtension ResourceKey="animation"/>

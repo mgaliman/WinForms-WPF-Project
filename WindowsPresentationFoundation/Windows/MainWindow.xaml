@@ -33,20 +33,22 @@
     </Window.Resources>
     <Grid Background="{StaticResource ResourceKey=background}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="3*"/>
-
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="auto"/>
+
 
         </Grid.RowDefinitions>
 
-        <ComboBox x:Name="ddlGroupResults" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="ddlGroupResults_SelectionChanged"/>
-        <Label x:Name="lblInfo" Grid.Row="0" Grid.Column="1" Width="180" Height="30" Margin="5"/>
-        
+        <ComboBox x:Name="ddlCountries" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="DdlCountries_SelectionChanged" Margin="10"/>
+
+        <ComboBox x:Name="ddlVersusCountries" Grid.Row="0" Grid.Column="1" Width="180" Height="20" SelectionChanged="DdlVersusCountries_SelectionChanged" Margin="10"/>
+
+        <Label x:Name="lblResult" Grid.Row="0" Grid.Column="2" Width="40" Content="00:00" Margin="10"/>
+
         <Grid.Triggers>
             <StaticResourceExtension ResourceKey="animation"/>
         </Grid.Triggers>

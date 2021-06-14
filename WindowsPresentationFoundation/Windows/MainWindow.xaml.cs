@@ -11,6 +11,8 @@ namespace WindowsPresentationFoundation
     /// </summary>
     public partial class MainWindow : Window
     {
+        HashSet<Matches> matches = new HashSet<Matches>();
+        HashSet<Teams> teams = new HashSet<Teams>();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,110 +29,77 @@ namespace WindowsPresentationFoundation
 
         private async void FillData()
         {
-            lblInfo.Content = "Waiting to fetch data!";
-
             try
             {
-                HashSet<Teams> teams = await Repository.LoadJsonCountries();
+                teams = await Repository.LoadJsonCountries();
 
-                foreach (var orderedTeam in teams)
+                foreach (var teamItem in teams)
                 {
-                    ddlGroupResults.Items.Add(orderedTeam);
+                    ddlCountries.Items.Add(teamItem);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                lblInfo.Content = ex.Message;
+                MessageBox.Show(ex.Message);                
             }
         }
 
-        private void ddlGroupResults_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void DdlCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            SettingsFile.country = ddlGroupResults.SelectedItem.ToString().Substring(0, ddlGroupResults.SelectedItem.ToString().IndexOf("(")).Trim();
+            SettingsFile.country = ddlCountries.SelectedItem.ToString().Substring(0, ddlCountries.SelectedItem.ToString().IndexOf("(")).Trim();
             Repository.SaveSettings();
+            ddlVersusCountries.Items.Clear();
+            FillPlayerData();
+        }
+
+        private void DdlVersusCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {                
+                SettingsFile.versusCountry = ddlVersusCountries.SelectedItem.ToString();
+                Repository.SaveSettings();
+                GetResult();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void GetResult()
+        {            
+            foreach (var resultItems in matches)
+            {
+                if (SettingsFile.country == resultItems.HomeTeamStatistics.Country)
+                {
+                    lblResult.Content = $"{resultItems.HomeTeam.Goals} : {resultItems.AwayTeam.Goals}";
+                }
+            }            
         }
 
         private async void FillPlayerData()
         {
-            lblInfo.Content = "Fetching data...";
-                        
             try
-            {
-                HashSet<Matches> teams = await Repository.LoadJsonPlayers();
-                
+            {                
+                matches = await Repository.LoadJsonPlayers();
 
-                StartingEleven player = new StartingEleven();
-                TeamEvent rankedPlayer = new TeamEvent();
-                Matches stadium = new Matches();
-
-                TeamEvent teamEvent = new TeamEvent();
-
-                HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
-                HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();
-                HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
-
-                foreach (var players in teams)
+                foreach (var matchesItem in matches)
                 {
-                    if (players.HomeTeamStatistics.Country == SettingsFile.country)
-                    {
-                        rankedStadiumList.Add(players);
-                        foreach (var playerItem in players.HomeTeamStatistics.StartingEleven)
-                        {
-                            playerList.Add(playerItem);
-
-                            foreach (var rankedItem in players.HomeTeamEvents)
-                            {
-                                rankedPlayerList.Add(rankedItem);
-                            }
-                        }
-                        foreach (var playerItem in players.HomeTeamStatistics.Substitutes)
-                        {
-                            playerList.Add(playerItem);
-
-                            foreach (var rankedItem in players.HomeTeamEvents)
-                            {
-                                rankedPlayerList.Add(rankedItem);
-                            }
-                        }
-                    }
-                    if (players.AwayTeamStatistics.Country == SettingsFile.country)
-                    {
-                        rankedStadiumList.Add(players);
-                        foreach (var playerItem in players.AwayTeamStatistics.StartingEleven)
-                        {
-                            playerList.Add(playerItem);
-
-                            foreach (var rankedItem in players.AwayTeamEvents)
-                            {
-                                rankedPlayerList.Add(rankedItem);
-                            }
-                        }
-                        foreach (var playerItem in players.AwayTeamStatistics.Substitutes)
-                        {
-                            playerList.Add(playerItem);
-
-                            foreach (var rankedItem in players.AwayTeamEvents)
-                            {
-                                rankedPlayerList.Add(rankedItem);
-                            }
-                        }
+                    if (matchesItem.HomeTeamStatistics.Country == SettingsFile.country)
+                    {                        
+                        ddlVersusCountries.Items.Add(matchesItem.AwayTeamCountry);                        
                     }
                 }
-
-                lblInfo.Content = SettingsFile.country;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                lblInfo.Content = ex.Message;
             }            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
-            FillPlayerData();
-        }
+        }        
     }
 }

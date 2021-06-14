@@ -19,6 +19,12 @@ namespace DataAccessLayer.Models
         [JsonProperty("away_team_country")]
         public string AwayTeamCountry { get; set; }
 
+        [JsonProperty("home_team")]
+        public Team HomeTeam { get; set; }
+
+        [JsonProperty("away_team")]
+        public Team AwayTeam { get; set; }
+
         [JsonProperty("home_team_events")]
         public List<TeamEvent> HomeTeamEvents { get; set; }
 
@@ -30,6 +36,13 @@ namespace DataAccessLayer.Models
 
         [JsonProperty("away_team_statistics")]
         public TeamStatistics AwayTeamStatistics { get; set; }
+    }
+
+    //Country Results
+    public partial class Team
+    {
+        [JsonProperty("goals")]
+        public long Goals { get; set; }
     }
 
     //Ranked player

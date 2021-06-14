@@ -20,6 +20,7 @@ namespace WindowsPresentationFoundation
         private void Init()
         {
             Repository.LoadSettings();
+            Repository.LoadLanguage();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -48,15 +49,11 @@ namespace WindowsPresentationFoundation
             {
                 Repository.SetCulture(Repository.EN);
                 SettingsFile.language = "Croatian";
-                RefreshForm();
-                LoadGender();
             }
             else
             {
                 Repository.SetCulture(Repository.HR);
                 SettingsFile.language = "Engleski";
-                RefreshForm();
-                LoadGender();
             }
         }
 
@@ -72,16 +69,10 @@ namespace WindowsPresentationFoundation
             }
         }
 
-        private void RefreshForm()
-        {
-            InitializeComponent();
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Repository.LoadSettings();
             Repository.LoadLanguage();
-            RefreshForm();
             LoadGender();
         }
 
