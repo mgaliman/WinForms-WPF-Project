@@ -79,6 +79,15 @@ namespace WindowsPresentationFoundation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        public static string btnInfo {
+            get {
+                return ResourceManager.GetString("btnInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Croatian.
         /// </summary>
         public static string btnLanguage {
@@ -102,6 +111,87 @@ namespace WindowsPresentationFoundation.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FIFA:.
+        /// </summary>
+        public static string lblCode {
+            get {
+                return ResourceManager.GetString("lblCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string lblCountry {
+            get {
+                return ResourceManager.GetString("lblCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Draws:.
+        /// </summary>
+        public static string lblDraws {
+            get {
+                return ResourceManager.GetString("lblDraws", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Games played:.
+        /// </summary>
+        public static string lblGamesPlayed {
+            get {
+                return ResourceManager.GetString("lblGamesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goal differential:.
+        /// </summary>
+        public static string lblGoalDifferential {
+            get {
+                return ResourceManager.GetString("lblGoalDifferential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Golas againsts:.
+        /// </summary>
+        public static string lblGoalsAgainsts {
+            get {
+                return ResourceManager.GetString("lblGoalsAgainsts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals for:.
+        /// </summary>
+        public static string lblGoalsFor {
+            get {
+                return ResourceManager.GetString("lblGoalsFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Losses:.
+        /// </summary>
+        public static string lblLosses {
+            get {
+                return ResourceManager.GetString("lblLosses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wins:.
+        /// </summary>
+        public static string lblWins {
+            get {
+                return ResourceManager.GetString("lblWins", resourceCulture);
             }
         }
         

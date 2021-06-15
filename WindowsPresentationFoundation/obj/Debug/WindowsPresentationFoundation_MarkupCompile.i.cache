@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\WindowsPresentationFoundation\App.xaml
-2162904252
+5-105774984
 
-8-39075103
+11385580460
 15-1283508295
-Windows\MainWindow.xaml;Windows\Settings.xaml;
+UserControls\UCPlayer.xaml;Windows\InformationWindow.xaml;Windows\MainWindow.xaml;Windows\PlayerInfoWindow.xaml;Windows\Settings.xaml;
 
 True
 

@@ -123,6 +123,9 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="btnInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
   <data name="btnLanguage" xml:space="preserve">
     <value>Croatian</value>
   </data>
@@ -131,6 +134,33 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="lblCode" xml:space="preserve">
+    <value>FIFA:</value>
+  </data>
+  <data name="lblCountry" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="lblDraws" xml:space="preserve">
+    <value>Draws:</value>
+  </data>
+  <data name="lblGamesPlayed" xml:space="preserve">
+    <value>Games played:</value>
+  </data>
+  <data name="lblGoalDifferential" xml:space="preserve">
+    <value>Goal differential:</value>
+  </data>
+  <data name="lblGoalsAgainsts" xml:space="preserve">
+    <value>Golas againsts:</value>
+  </data>
+  <data name="lblGoalsFor" xml:space="preserve">
+    <value>Goals for:</value>
+  </data>
+  <data name="lblLosses" xml:space="preserve">
+    <value>Losses:</value>
+  </data>
+  <data name="lblWins" xml:space="preserve">
+    <value>Wins:</value>
   </data>
   <data name="rbtnFemale" xml:space="preserve">
     <value>Female</value>

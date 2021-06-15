@@ -1,13 +1,12 @@
-﻿<Window x:Class="WindowsPresentationFoundation.MainWindow"
+﻿<Window x:Class="WindowsPresentationFoundation.Windows.PlayerInfoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lang="clr-namespace:WindowsPresentationFoundation.Properties"
-        xmlns:local="clr-namespace:WindowsPresentationFoundation"
+        xmlns:local="clr-namespace:WindowsPresentationFoundation.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" 
-        Closing="Window_Closing">
+        Title="PlayerInfoWindow" Height="330" Width="220">
     <Window.Resources>
         <LinearGradientBrush x:Key="background" StartPoint="0,0" EndPoint="1,1">
             <LinearGradientBrush.GradientStops>
@@ -34,35 +33,36 @@
     </Window.Resources>
     <Grid Background="{StaticResource ResourceKey=background}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ComboBox x:Name="ddlCountries" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="DdlCountries_SelectionChanged" Margin="10"/>
-
-        <ComboBox x:Name="ddlVersusCountries" Grid.Row="0" Grid.Column="2" Width="180" Height="20" SelectionChanged="DdlVersusCountries_SelectionChanged" Margin="10"/>
-
-        <Label x:Name="lblResult" Grid.Row="0" Grid.Column="4" Width="100" FontSize="30" Content="00:00" Margin="30 0 0 0"/>
-
-        <Button x:Name="btnInfoCountry" Grid.Row="0" Grid.Column="1" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoCountry_Click"/>
-
-        <Button x:Name="btnInfoVersusCountry" Grid.Row="0" Grid.Column="3" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoVersusCountry_Click"/>
-
-        <MediaElement x:Name="gif" Grid.RowSpan="2" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" MediaEnded="Gif_MediaEnded" UnloadedBehavior="Manual" Source="/Materials/Loading.gif" LoadedBehavior="Play" Stretch="None" Width="60" Height="60"/>
-
-        <Image Grid.Row="1" Grid.ColumnSpan="6" Source="/Materials/FootballPitch.png"  Margin="10"/>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblCountryData" Content="data"/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblCodeData" Content="data"/>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblGamesPlayedData" Content="data"/>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblWinsData" Content="data"/>
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblLossesData" Content="data"/>
+        <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblDrawsData" Content="data"/>
+        <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" Content=""/>
+        <Label Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblGoalsForData" Content="data"/>
 
         <Grid.Triggers>
             <StaticResourceExtension ResourceKey="animation"/>
         </Grid.Triggers>
     </Grid>
-    
 </Window>

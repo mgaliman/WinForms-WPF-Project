@@ -61,9 +61,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="UserControls\UCPlayer.xaml.cs">
+      <DependentUpon>UCPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InformationWindow.xaml.cs">
+      <DependentUpon>InformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PlayerInfoWindow.xaml.cs">
+      <DependentUpon>PlayerInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\UCPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\InformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +93,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\PlayerInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +137,12 @@
       <Project>{3F5391E6-C117-4821-AA1E-F9BE0EA34142}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Materials\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Materials\FootballPitch.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

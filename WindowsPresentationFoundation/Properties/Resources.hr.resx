@@ -123,6 +123,9 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Prekini</value>
   </data>
+  <data name="btnInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
   <data name="btnLanguage" xml:space="preserve">
     <value>Engleski</value>
   </data>
@@ -131,6 +134,33 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>Jezik:</value>
+  </data>
+  <data name="lblCode" xml:space="preserve">
+    <value>FIFA:</value>
+  </data>
+  <data name="lblCountry" xml:space="preserve">
+    <value>Naziv:</value>
+  </data>
+  <data name="lblDraws" xml:space="preserve">
+    <value>Neodlučenih:</value>
+  </data>
+  <data name="lblGamesPlayed" xml:space="preserve">
+    <value>Broj odigranih:</value>
+  </data>
+  <data name="lblGoalDifferential" xml:space="preserve">
+    <value>Razlika:</value>
+  </data>
+  <data name="lblGoalsAgainsts" xml:space="preserve">
+    <value>Golova primljenih:</value>
+  </data>
+  <data name="lblGoalsFor" xml:space="preserve">
+    <value>Golova zabijenih:</value>
+  </data>
+  <data name="lblLosses" xml:space="preserve">
+    <value>Poraza:</value>
+  </data>
+  <data name="lblWins" xml:space="preserve">
+    <value>Pobjeda:</value>
   </data>
   <data name="rbtnFemale" xml:space="preserve">
     <value>Žensko</value>
