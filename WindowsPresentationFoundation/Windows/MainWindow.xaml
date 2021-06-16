@@ -34,35 +34,67 @@
     </Window.Resources>
     <Grid Background="{StaticResource ResourceKey=background}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ComboBox x:Name="ddlCountries" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="DdlCountries_SelectionChanged" Margin="10"/>
+        <ComboBox x:Name="ddlCountries" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="DdlCountries_SelectionChanged" Margin="10"/>
 
-        <ComboBox x:Name="ddlVersusCountries" Grid.Row="0" Grid.Column="2" Width="180" Height="20" SelectionChanged="DdlVersusCountries_SelectionChanged" Margin="10"/>
+        <ComboBox x:Name="ddlVersusCountries" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="3" Width="180" Height="20" SelectionChanged="DdlVersusCountries_SelectionChanged" Margin="10"/>
 
-        <Label x:Name="lblResult" Grid.Row="0" Grid.Column="4" Width="100" FontSize="30" Content="00:00" Margin="30 0 0 0"/>
+        <Label x:Name="lblResult" Grid.ColumnSpan="2"  Grid.Row="0" Grid.Column="6" Width="100" FontSize="30" Content="00:00" Margin="30 0 0 0"/>
 
-        <Button x:Name="btnInfoCountry" Grid.Row="0" Grid.Column="1" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoCountry_Click"/>
+        <Button x:Name="btnInfoCountry" Grid.Row="0" Grid.Column="2" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoCountry_Click"/>
 
-        <Button x:Name="btnInfoVersusCountry" Grid.Row="0" Grid.Column="3" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoVersusCountry_Click"/>
+        <Button x:Name="btnInfoVersusCountry" Grid.Row="0" Grid.Column="5" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoVersusCountry_Click"/>
 
-        <MediaElement x:Name="gif" Grid.RowSpan="2" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" MediaEnded="Gif_MediaEnded" UnloadedBehavior="Manual" Source="/Materials/Loading.gif" LoadedBehavior="Play" Stretch="None" Width="60" Height="60"/>
+        <!--<MediaElement x:Name="gif" Grid.RowSpan="2" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" MediaEnded="Gif_MediaEnded" UnloadedBehavior="Manual" Source="/Materials/Loading.gif" LoadedBehavior="Play" Stretch="None" Width="60" Height="60"/>-->
 
-        <Image Grid.Row="1" Grid.ColumnSpan="6" Source="/Materials/FootballPitch.png"  Margin="10"/>
+        <Image Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="7" Grid.Column="1" Source="/Materials/FootballPitch.png"  Margin="10"/>
+
+        <Label x:Name="hGoalie" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hDefender1" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hDefender2" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hDefender3" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hDefender4" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hMidField1" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hForward1" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hForward2" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hMidField2" Grid.Row="5" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="hForward3" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="PLAYER" Margin="0,57,63,57"/>
+        <Label x:Name="hForward4" Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+
+        <Label x:Name="aGoalie" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aDefender1" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aDefender2" Grid.Row="3" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aDefender3" Grid.Row="4" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aDefender4" Grid.Row="5" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="ahMidField1" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aForward1" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aForward2" Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aMidField2" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aForward3"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
+        <Label x:Name="aForward4"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="PLAYER"/>
 
         <Grid.Triggers>
             <StaticResourceExtension ResourceKey="animation"/>
         </Grid.Triggers>
     </Grid>
-    
+
 </Window>

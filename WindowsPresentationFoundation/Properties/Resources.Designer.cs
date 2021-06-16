@@ -88,15 +88,6 @@ namespace WindowsPresentationFoundation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Croatian.
-        /// </summary>
-        public static string btnLanguage {
-            get {
-                return ResourceManager.GetString("btnLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Championship:.
         /// </summary>
         public static string Championship {
@@ -111,6 +102,15 @@ namespace WindowsPresentationFoundation.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Captain:.
+        /// </summary>
+        public static string lblCaptain {
+            get {
+                return ResourceManager.GetString("lblCaptain", resourceCulture);
             }
         }
         
@@ -187,11 +187,74 @@ namespace WindowsPresentationFoundation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string lblName {
+            get {
+                return ResourceManager.GetString("lblName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position:.
+        /// </summary>
+        public static string lblPosition {
+            get {
+                return ResourceManager.GetString("lblPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scored goals:.
+        /// </summary>
+        public static string lblScoredGoals {
+            get {
+                return ResourceManager.GetString("lblScoredGoals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shirt number:.
+        /// </summary>
+        public static string lblShirtNumber {
+            get {
+                return ResourceManager.GetString("lblShirtNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wins:.
         /// </summary>
         public static string lblWins {
             get {
                 return ResourceManager.GetString("lblWins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow cards:.
+        /// </summary>
+        public static string lblYellowCards {
+            get {
+                return ResourceManager.GetString("lblYellowCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Croatian.
+        /// </summary>
+        public static string rbtnCroatianLanguage {
+            get {
+                return ResourceManager.GetString("rbtnCroatianLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string rbtnEnglishLanguage {
+            get {
+                return ResourceManager.GetString("rbtnEnglishLanguage", resourceCulture);
             }
         }
         

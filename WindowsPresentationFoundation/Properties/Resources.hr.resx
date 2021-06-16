@@ -135,6 +135,9 @@
   <data name="Language" xml:space="preserve">
     <value>Jezik:</value>
   </data>
+  <data name="lblCaptain" xml:space="preserve">
+    <value>Kapetan:</value>
+  </data>
   <data name="lblCode" xml:space="preserve">
     <value>FIFA:</value>
   </data>
@@ -159,8 +162,29 @@
   <data name="lblLosses" xml:space="preserve">
     <value>Poraza:</value>
   </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Naziv:</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Pozicija:</value>
+  </data>
+  <data name="lblScoredGoals" xml:space="preserve">
+    <value>Zabijeni golovi:</value>
+  </data>
+  <data name="lblShirtNumber" xml:space="preserve">
+    <value>Broj dresa:</value>
+  </data>
   <data name="lblWins" xml:space="preserve">
     <value>Pobjeda:</value>
+  </data>
+  <data name="lblYellowCards" xml:space="preserve">
+    <value>Zuti kartoni:</value>
+  </data>
+  <data name="rbtnCroatianLanguage" xml:space="preserve">
+    <value>Hrvatski</value>
+  </data>
+  <data name="rbtnEnglishLanguage" xml:space="preserve">
+    <value>Engleski</value>
   </data>
   <data name="rbtnFemale" xml:space="preserve">
     <value>Žensko</value>

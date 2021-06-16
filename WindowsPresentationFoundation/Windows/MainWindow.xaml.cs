@@ -101,8 +101,8 @@ namespace WindowsPresentationFoundation
         }
         private void Gif_MediaEnded(object sender, RoutedEventArgs e)
         {
-            gif.Position = new TimeSpan(0, 0, 1);
-            gif.Play();
+            //gif.Position = new TimeSpan(0, 0, 1);
+            //gif.Play();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
 
@@ -13,8 +14,8 @@ namespace WindowsPresentationFoundation
     {
         public Settings()
         {
-            InitializeComponent();
             Init();
+            InitializeComponent();            
         }
 
         private void Init()
@@ -32,6 +33,7 @@ namespace WindowsPresentationFoundation
         {
             Hide();
             SettingsFile.gender = (bool)rbtnFemale.IsChecked;
+            SettingsFile.language = (bool)rbtnEnglish.IsChecked ? "Croatian" : "Engleski";
             SettingsFile.country = String.Empty;
             Repository.SaveSettings();
             new MainWindow().Show();
@@ -41,20 +43,14 @@ namespace WindowsPresentationFoundation
         {
             Hide();
             new MainWindow().Show();
-        }
+        }      
 
-        private void BtnLanguage_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Thread.CurrentThread.CurrentCulture.Name == Repository.HR)
-            {
-                Repository.SetCulture(Repository.EN);
-                SettingsFile.language = "Croatian";
-            }
-            else
-            {
-                Repository.SetCulture(Repository.HR);
-                SettingsFile.language = "Engleski";
-            }
+            Repository.LoadSettings();
+            Repository.LoadLanguage();
+            LoadGender();
+            LoadLanguage();
         }
 
         private void LoadGender()
@@ -69,26 +65,32 @@ namespace WindowsPresentationFoundation
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void LoadLanguage()
         {
-            Repository.LoadSettings();
-            Repository.LoadLanguage();
-            LoadGender();
+            if (SettingsFile.language == "Croatian")
+            {
+                rbtnEnglish.IsChecked = true;
+            }
+            else
+            {
+                rbtnCroatian.IsChecked = true;
+            }
         }
 
-        private void Btn480p_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn720p_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn1080p_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        //private void LoadResolution()
+        //{
+        //    if (false)
+        //    {
+        //        rbtn480p.IsChecked = true;
+        //    }
+        //    else if (false)
+        //    {
+        //        rbtn720p.IsChecked = true;
+        //    }
+        //    else
+        //    {
+        //        rbtn1080p.IsChecked = true;
+        //    }
+        //}
     }
 }

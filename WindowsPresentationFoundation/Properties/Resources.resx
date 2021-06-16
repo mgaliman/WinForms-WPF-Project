@@ -126,14 +126,14 @@
   <data name="btnInfo" xml:space="preserve">
     <value>Info</value>
   </data>
-  <data name="btnLanguage" xml:space="preserve">
-    <value>Croatian</value>
-  </data>
   <data name="Championship" xml:space="preserve">
     <value>Championship:</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="lblCaptain" xml:space="preserve">
+    <value>Captain:</value>
   </data>
   <data name="lblCode" xml:space="preserve">
     <value>FIFA:</value>
@@ -159,8 +159,29 @@
   <data name="lblLosses" xml:space="preserve">
     <value>Losses:</value>
   </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Position:</value>
+  </data>
+  <data name="lblScoredGoals" xml:space="preserve">
+    <value>Scored goals:</value>
+  </data>
+  <data name="lblShirtNumber" xml:space="preserve">
+    <value>Shirt number:</value>
+  </data>
   <data name="lblWins" xml:space="preserve">
     <value>Wins:</value>
+  </data>
+  <data name="lblYellowCards" xml:space="preserve">
+    <value>Yellow cards:</value>
+  </data>
+  <data name="rbtnCroatianLanguage" xml:space="preserve">
+    <value>Croatian</value>
+  </data>
+  <data name="rbtnEnglishLanguage" xml:space="preserve">
+    <value>English</value>
   </data>
   <data name="rbtnFemale" xml:space="preserve">
     <value>Female</value>
