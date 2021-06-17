@@ -23,7 +23,7 @@ namespace WindowsPresentationFoundation.Windows
             lblWinsData.Content = result.Wins;
             lblLossesData.Content = result.Losses;
             lblDrawsData.Content = result.Draws;
-            lblGoalsForData.Content = result.GoalDifferential;
+            lblGoalsForData.Content = result.GoalsFor;
             lblGoalsAgainstsData.Content = result.GoalsAgainst;
             lblGoalDifferentialData.Content = result.GoalDifferential;
         }

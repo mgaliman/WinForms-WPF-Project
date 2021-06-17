@@ -15,7 +15,7 @@ namespace DataAccessLayer
 {
     public class Repository
     {
-        public const string HR = "hr", EN = "en";        
+        public const string HR = "hr", EN = "en";
         public static string SETTINGS_PATH = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Settings/settings.txt");
         public static string FAVOURITES_PATH = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Settings/favourites.txt");
         public const string DEFAULT_SETTINGS = "Croatian|True|";
@@ -213,7 +213,7 @@ namespace DataAccessLayer
                 {
                     return Task.Run(() =>
                     {
-                        using (StreamReader reader = new StreamReader(ApiConstants.MaleResultsLocation))
+                        using (StreamReader reader = new StreamReader(ApiConstants.FemaleResultsLocation))
                         {
                             string json = reader.ReadToEnd();
                             return JsonConvert.DeserializeObject<HashSet<Results>>(json);
@@ -224,7 +224,7 @@ namespace DataAccessLayer
                 {
                     return Task.Run(() =>
                     {
-                        using (StreamReader reader = new StreamReader(ApiConstants.FemaleResultsLocation))
+                        using (StreamReader reader = new StreamReader(ApiConstants.MaleResultsLocation))
                         {
                             string json = reader.ReadToEnd();
                             return JsonConvert.DeserializeObject<HashSet<Results>>(json);

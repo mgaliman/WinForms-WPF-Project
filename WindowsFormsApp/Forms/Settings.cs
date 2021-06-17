@@ -91,7 +91,7 @@ namespace WindowsFormsApp
             if (result == DialogResult.Yes)
             {
                 Dispose();
-                Application.Exit();                
+                Application.Exit();
             }
             else
             {
@@ -101,7 +101,7 @@ namespace WindowsFormsApp
         }
 
         protected override bool ProcessDialogKey(Keys keyData)
-        {            
+        {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
                 DialogResult result = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

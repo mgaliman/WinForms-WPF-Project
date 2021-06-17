@@ -128,7 +128,7 @@ namespace WindowsFormsApp
                 Matches stadium = new Matches();
 
                 TeamEvent teamEvent = new TeamEvent();
-                
+
                 HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
                 HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();
                 HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
@@ -140,7 +140,7 @@ namespace WindowsFormsApp
                 userRankedPlayerControlsList = new List<TeamEvent>();
                 userRankedStadiumControlsList = new List<Matches>();
 
-                
+
 
 
                 foreach (var players in matches)
@@ -336,7 +336,7 @@ namespace WindowsFormsApp
                 if (result == DialogResult.Yes)
                 {
                     Dispose();
-                    Application.Exit();                    
+                    Application.Exit();
                 }
                 return true;
             }

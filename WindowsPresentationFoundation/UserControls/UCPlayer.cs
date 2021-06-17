@@ -7,14 +7,14 @@ namespace WindowsPresentationFoundation.UserControls
     /// </summary>
     public partial class UCPlayer : UserControl
     {
+
+
         public UCPlayer()
         {
             InitializeComponent();
-            Init();
+            DataContext = this;
         }
-
-        private void Init()
-        {
-        }
+        public string PlayerName { get; set; }
+        public int ShirtNumber { get; set; }
     }
 }

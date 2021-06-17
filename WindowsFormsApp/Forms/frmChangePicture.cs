@@ -28,7 +28,7 @@ namespace WindowsFormsApp
             {
                 Filter = "Pictures|*.bmp;*.jpg;*.jfif;*.jpeg;*.png;|All files|*.*",
                 InitialDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Pictures")
-        };
+            };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {

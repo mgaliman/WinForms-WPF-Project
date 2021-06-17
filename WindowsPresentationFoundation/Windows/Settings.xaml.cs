@@ -1,8 +1,6 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
-using System.Globalization;
-using System.Threading;
 using System.Windows;
 
 namespace WindowsPresentationFoundation
@@ -15,7 +13,7 @@ namespace WindowsPresentationFoundation
         public Settings()
         {
             Init();
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void Init()
@@ -43,7 +41,7 @@ namespace WindowsPresentationFoundation
         {
             Hide();
             new MainWindow().Show();
-        }      
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

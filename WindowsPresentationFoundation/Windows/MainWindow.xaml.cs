@@ -43,7 +43,7 @@ namespace WindowsPresentationFoundation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -51,14 +51,13 @@ namespace WindowsPresentationFoundation
         {
             SettingsFile.country = ddlCountries.SelectedItem.ToString().Substring(0, ddlCountries.SelectedItem.ToString().IndexOf("(")).Trim();
             Repository.SaveSettings();
-            ddlVersusCountries.Items.Clear();
-            FillPlayerData();            
+            FillPlayerData();
         }
 
         private void DdlVersusCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {            
+        {
             try
-            {                
+            {
                 SettingsFile.versusCountry = ddlVersusCountries.SelectedItem.ToString();
                 Repository.SaveSettings();
                 GetResult();
@@ -70,34 +69,34 @@ namespace WindowsPresentationFoundation
         }
 
         private void GetResult()
-        {            
+        {
             foreach (var resultItems in matches)
             {
                 if (SettingsFile.country == resultItems.HomeTeamStatistics.Country)
                 {
                     lblResult.Content = $"{resultItems.HomeTeam.Goals} : {resultItems.AwayTeam.Goals}";
                 }
-            }            
+            }
         }
 
         private async void FillPlayerData()
         {
             try
-            {                
+            {
                 matches = await Repository.LoadJsonMatches();
-
+                ddlVersusCountries.Items.Clear();
                 foreach (var matchesItem in matches)
                 {
                     if (matchesItem.HomeTeamStatistics.Country == SettingsFile.country)
-                    {                        
-                        ddlVersusCountries.Items.Add(matchesItem.AwayTeamCountry);                        
+                    {
+                        ddlVersusCountries.Items.Add(matchesItem.AwayTeamCountry);
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
         private void Gif_MediaEnded(object sender, RoutedEventArgs e)
         {
@@ -129,7 +128,7 @@ namespace WindowsPresentationFoundation
             foreach (var item in results)
             {
                 if (item.Country == SettingsFile.versusCountry)
-                {                    
+                {
                     country = item;
                 }
             }
