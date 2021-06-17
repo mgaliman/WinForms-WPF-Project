@@ -8,6 +8,7 @@ namespace DataAccessLayer.Models
         public static bool gender;
         public static string country;
         public static string versusCountry;
+        public static string resolution;
         public static HashSet<string> favourites;
     }
 }

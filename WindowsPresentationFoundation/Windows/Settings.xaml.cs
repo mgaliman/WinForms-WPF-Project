@@ -32,7 +32,19 @@ namespace WindowsPresentationFoundation
             Hide();
             SettingsFile.gender = (bool)rbtnFemale.IsChecked;
             SettingsFile.language = (bool)rbtnEnglish.IsChecked ? "Croatian" : "Engleski";
-            SettingsFile.country = String.Empty;
+            if ((bool)rbtn480p.IsChecked)
+            {
+                SettingsFile.resolution = "480p";
+            }
+            else if ((bool)rbtn720p.IsChecked)
+            {
+                SettingsFile.resolution = "720p";
+            }
+            else
+            {
+                SettingsFile.resolution = "1080p";
+            }
+            
             Repository.SaveSettings();
             new MainWindow().Show();
         }
@@ -49,6 +61,7 @@ namespace WindowsPresentationFoundation
             Repository.LoadLanguage();
             LoadGender();
             LoadLanguage();
+            LoadResolution();
         }
 
         private void LoadGender()
@@ -75,20 +88,20 @@ namespace WindowsPresentationFoundation
             }
         }
 
-        //private void LoadResolution()
-        //{
-        //    if (false)
-        //    {
-        //        rbtn480p.IsChecked = true;
-        //    }
-        //    else if (false)
-        //    {
-        //        rbtn720p.IsChecked = true;
-        //    }
-        //    else
-        //    {
-        //        rbtn1080p.IsChecked = true;
-        //    }
-        //}
+        private void LoadResolution()
+        {
+            switch (SettingsFile.resolution)
+            {
+                case "480p":
+                    rbtn480p.IsChecked = true;
+                    break;
+                case "720p":
+                    rbtn720p.IsChecked = true;
+                    break;
+                case "1080p":
+                    rbtn1080p.IsChecked = true;
+                    break;
+            }
+        }
     }
 }
