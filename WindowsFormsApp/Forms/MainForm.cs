@@ -88,7 +88,7 @@ namespace WindowsFormsApp
 
             try
             {
-                HashSet<Teams> teams = await Repository.LoadJsonCountries();
+                HashSet<Teams> teams = await Repository.LoadJsonTeams();
 
                 foreach (var orderedTeam in teams)
                 {
@@ -120,7 +120,7 @@ namespace WindowsFormsApp
 
             try
             {
-                HashSet<Matches> matches = await Repository.LoadJsonPlayers();
+                HashSet<Matches> matches = await Repository.LoadJsonMatches();
                 lblTest.Text = SettingsFile.country;
 
                 StartingEleven player = new StartingEleven();

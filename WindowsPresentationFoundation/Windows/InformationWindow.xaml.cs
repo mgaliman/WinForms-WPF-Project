@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer.Models;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace WindowsPresentationFoundation.Windows
@@ -9,24 +8,24 @@ namespace WindowsPresentationFoundation.Windows
     /// </summary>
     public partial class InformationWindow : Window
     {
-        Teams team = new Teams();
-        public InformationWindow(Teams team)
+        Results result = new Results();
+        public InformationWindow(Results result)
         {
             InitializeComponent();
-            this.team = team;
+            this.result = result;
             Init();
         }
         private void Init()
         {
-            lblCountryData.Content = team.Country;
-            lblCodeData.Content = team.FifaCode;
-            lblGamesPlayedData.Content = team.GamesPlayed;
-            lblWinsData.Content = team.Wins;
-            lblLossesData.Content = team.Losses;
-            lblDrawsData.Content = team.Draws;
-            lblGoalsForData.Content = team.GoalDifferential;
-            lblGoalsAgainstsData.Content = team.GoalsAgainst;
-            lblGoalDifferentialData.Content = team.GoalDifferential;
+            lblCountryData.Content = result.Country;
+            lblCodeData.Content = result.FifaCode;
+            lblGamesPlayedData.Content = result.GamesPlayed;
+            lblWinsData.Content = result.Wins;
+            lblLossesData.Content = result.Losses;
+            lblDrawsData.Content = result.Draws;
+            lblGoalsForData.Content = result.GoalDifferential;
+            lblGoalsAgainstsData.Content = result.GoalsAgainst;
+            lblGoalDifferentialData.Content = result.GoalDifferential;
         }
     }
 }

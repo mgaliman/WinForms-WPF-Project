@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Constants\ApiConstants.cs" />
     <Compile Include="Models\Matches.cs" />
+    <Compile Include="Models\Results.cs" />
     <Compile Include="Models\Teams.cs" />
     <Compile Include="Models\SettingsFile.cs" />
     <Compile Include="Repository.cs" />

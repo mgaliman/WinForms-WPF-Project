@@ -13,8 +13,8 @@ namespace WindowsPresentationFoundation
     public partial class MainWindow : Window
     {
         HashSet<Matches> matches = new HashSet<Matches>();
-        HashSet<Teams> teams = new HashSet<Teams>();
-        Teams country = new Teams();
+        HashSet<Results> results = new HashSet<Results>();
+        Results country = new Results();
         public MainWindow()
         {
             InitializeComponent();
@@ -34,11 +34,11 @@ namespace WindowsPresentationFoundation
         {
             try
             {
-                teams = await Repository.LoadJsonCountries();
+                results = await Repository.LoadJsonResults();
 
-                foreach (var teamItem in teams)
+                foreach (var resultItem in results)
                 {
-                    ddlCountries.Items.Add(teamItem);
+                    ddlCountries.Items.Add(resultItem);
                 }
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace WindowsPresentationFoundation
         {
             try
             {                
-                matches = await Repository.LoadJsonPlayers();
+                matches = await Repository.LoadJsonMatches();
 
                 foreach (var matchesItem in matches)
                 {
@@ -112,7 +112,8 @@ namespace WindowsPresentationFoundation
 
         private void BtnInfoCountry_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in teams)
+            country = new Results();
+            foreach (var item in results)
             {
                 if (item.Country == SettingsFile.country)
                 {
@@ -124,10 +125,11 @@ namespace WindowsPresentationFoundation
 
         private void BtnInfoVersusCountry_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in teams)
+            country = new Results();
+            foreach (var item in results)
             {
                 if (item.Country == SettingsFile.versusCountry)
-                {
+                {                    
                     country = item;
                 }
             }

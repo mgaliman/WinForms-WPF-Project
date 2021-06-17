@@ -97,7 +97,8 @@ namespace DataAccessLayer
             }
         }
 
-        public static Task<HashSet<Teams>> LoadJsonCountries()
+        //Loads countries
+        public static Task<HashSet<Teams>> LoadJsonTeams()
         {
             if (File.Exists(ApiConstants.FemaleTeamsLocation) && File.Exists(ApiConstants.MaleTeamsLocation))
             {
@@ -149,7 +150,8 @@ namespace DataAccessLayer
             }
         }
 
-        public static Task<HashSet<Matches>> LoadJsonPlayers()
+        //Loads players
+        public static Task<HashSet<Matches>> LoadJsonMatches()
         {
             if (File.Exists(ApiConstants.FemaleMatchesLocation) || File.Exists(ApiConstants.MaleMatchesLocation))
             {
@@ -196,6 +198,59 @@ namespace DataAccessLayer
                         var apiClient = new RestClient(ApiConstants.MaleDetailedMatchesWebLocation);
                         var response = apiClient.Execute<HashSet<Matches>>(new RestRequest());
                         return JsonConvert.DeserializeObject<HashSet<Matches>>(response.Content);
+                    });
+                }
+            }
+        }
+
+        //Loads detailed countries
+        public static Task<HashSet<Results>> LoadJsonResults()
+        {
+            if (File.Exists(ApiConstants.FemaleTeamsLocation) && File.Exists(ApiConstants.MaleResultsLocation))
+            {
+                //File load
+                if (SettingsFile.gender)
+                {
+                    return Task.Run(() =>
+                    {
+                        using (StreamReader reader = new StreamReader(ApiConstants.MaleResultsLocation))
+                        {
+                            string json = reader.ReadToEnd();
+                            return JsonConvert.DeserializeObject<HashSet<Results>>(json);
+                        }
+                    });
+                }
+                else
+                {
+                    return Task.Run(() =>
+                    {
+                        using (StreamReader reader = new StreamReader(ApiConstants.FemaleResultsLocation))
+                        {
+                            string json = reader.ReadToEnd();
+                            return JsonConvert.DeserializeObject<HashSet<Results>>(json);
+                        }
+                    });
+                }
+            }
+            else
+            {
+                //Web load
+                if (SettingsFile.gender)
+                {
+                    return Task.Run(() =>
+                    {
+                        var apiClient = new RestClient(ApiConstants.FemaleTeamsWebLocation);
+                        var response = apiClient.Execute<HashSet<Results>>(new RestRequest());
+                        return JsonConvert.DeserializeObject<HashSet<Results>>(response.Content);
+                    });
+                }
+                else
+                {
+                    return Task.Run(() =>
+                    {
+                        var apiClient = new RestClient(ApiConstants.MaleTeamsWebLocation);
+                        var response = apiClient.Execute<HashSet<Results>>(new RestRequest());
+                        return JsonConvert.DeserializeObject<HashSet<Results>>(response.Content);
                     });
                 }
             }
