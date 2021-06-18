@@ -1,6 +1,5 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
-using System;
 using System.Windows;
 
 namespace WindowsPresentationFoundation
@@ -44,7 +43,6 @@ namespace WindowsPresentationFoundation
             {
                 SettingsFile.resolution = "1080p";
             }
-            
             Repository.SaveSettings();
             new MainWindow().Show();
         }

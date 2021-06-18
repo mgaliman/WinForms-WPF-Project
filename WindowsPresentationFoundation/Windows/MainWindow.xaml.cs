@@ -23,11 +23,30 @@ namespace WindowsPresentationFoundation
 
         private void Init()
         {
+            LoadResolution();
             Repository.LoadSettings();
             Repository.LoadLanguage();
             FillData();
             ddlCountries.SelectedItem = SettingsFile.country;
             ddlVersusCountries.SelectedItem = SettingsFile.versusCountry;
+        }
+        private void LoadResolution()
+        {
+            switch (SettingsFile.resolution)
+            {
+                case "480p":
+                    Width = 800;
+                    Height = 500;
+                    break;
+                case "720p":
+                    Width = 1280;
+                    Height = 720;
+                    break;
+                case "1080p":
+                    Width = 1920;
+                    Height = 1080;
+                    break;
+            }
         }
 
         private async void FillData()
