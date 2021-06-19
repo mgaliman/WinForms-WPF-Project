@@ -10,5 +10,7 @@ namespace DataAccessLayer.Models
         public static string versusCountry;
         public static string resolution;
         public static HashSet<string> favourites;
+        public static int countryIndex;
+        public static int versusCountryIndex;
     }
 }

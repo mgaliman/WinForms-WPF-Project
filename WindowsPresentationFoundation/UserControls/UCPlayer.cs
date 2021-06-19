@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using DataAccessLayer.Models;
+using System.Windows.Controls;
 
 namespace WindowsPresentationFoundation.UserControls
 {
@@ -7,12 +8,12 @@ namespace WindowsPresentationFoundation.UserControls
     /// </summary>
     public partial class UCPlayer : UserControl
     {
-
-
-        public UCPlayer()
+        public UCPlayer(StartingEleven startingEleven)
         {
             InitializeComponent();
             DataContext = this;
+            lblPlayer.Content = startingEleven.Name;
+            lblShirtNumber.Content = startingEleven.ShirtNumber;
         }
         public string PlayerName { get; set; }
         public int ShirtNumber { get; set; }
