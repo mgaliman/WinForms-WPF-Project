@@ -44,14 +44,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -67,31 +63,17 @@
 
         <!--<MediaElement x:Name="gif" Grid.RowSpan="2" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" MediaEnded="Gif_MediaEnded" UnloadedBehavior="Manual" Source="/Materials/Loading.gif" LoadedBehavior="Play" Stretch="None" Width="60" Height="60"/>-->
 
-        <Image Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="7" Grid.Column="1" Source="/Materials/FootballPitch.png"  Margin="10"/>
+        <Image Grid.Row="1" Grid.ColumnSpan="8" Grid.Column="1" Source="/Materials/FootballPitch.png"  Margin="10"/>
 
-        <Label x:Name="hGoalie" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="hDefender1" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label x:Name="hDefender2" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" />
-        <Label x:Name="hDefender3" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" />
-        <Label x:Name="hDefender4" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="hMidField1" Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Label x:Name="hForward1" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="hForward2" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="hMidField2" Grid.Row="5" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Label x:Name="hForward3" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="hForward4" Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
-        <Label x:Name="aGoalie" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aDefender1" Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aDefender2" Grid.Row="3" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Label x:Name="aDefender3" Grid.Row="4" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Label x:Name="aDefender4" Grid.Row="5" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aMidField1" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left" />
-        <Label x:Name="aForward1" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aForward2" Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aMidField2" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left" />
-        <Label x:Name="aForward3"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label x:Name="aForward4"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="hGoalie" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="hDefender" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="hMidField" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="hForward" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" />
+     
+        <StackPanel x:Name="aGoalie" Grid.Row="1" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="aDefender" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="aMidField" Grid.Row="1" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <StackPanel x:Name="aForward" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
         <Grid.Triggers>
             <StaticResourceExtension ResourceKey="animation"/>

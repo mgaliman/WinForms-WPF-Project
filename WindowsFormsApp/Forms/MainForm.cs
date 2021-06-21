@@ -127,8 +127,6 @@ namespace WindowsFormsApp
                 TeamEvent rankedPlayer = new TeamEvent();
                 Matches stadium = new Matches();
 
-                TeamEvent teamEvent = new TeamEvent();
-
                 HashSet<StartingEleven> playerList = new HashSet<StartingEleven>();
                 HashSet<TeamEvent> rankedPlayerList = new HashSet<TeamEvent>();
                 HashSet<Matches> rankedStadiumList = new HashSet<Matches>();
@@ -196,34 +194,29 @@ namespace WindowsFormsApp
 
                 foreach (var playerItem in sortedPlayers)
                 {
+                    rankedPlayer = new TeamEvent();
                     foreach (var rankedItem in rankedPlayerList)
                     {
                         if (playerItem.Name == rankedItem.Player)
-                        {
+                        {                            
                             rankedPlayer.Player = rankedItem.Player;
                             switch (rankedItem.TypeOfEvent)
                             {
                                 case "goal":
                                     rankedPlayer.Goals++;
-                                    teamEvent.Goals++;
                                     break;
                                 case "yellow-card":
                                     rankedPlayer.YellowCards++;
-                                    teamEvent.YellowCards++;
                                     break;
-                            }
-                            //Loads only name!!!
-                            teamEvent = rankedItem;
+                            }                            
                         }
                     };
 
                     if (!(rankedPlayer.Goals == 0 && rankedPlayer.YellowCards == 0))
                     {
-                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));
-                        userRankedPlayerControlsList.Add(teamEvent);
+                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));                        
+                        userRankedPlayerControlsList.Add(rankedPlayer);
                     }
-                    rankedPlayer.Goals = 0;
-                    rankedPlayer.YellowCards = 0;
                     userPlayerControls.Add(new PlayerInfo(playerItem));
                 }
 
@@ -243,8 +236,9 @@ namespace WindowsFormsApp
                 }
 
                 //Ranked players
-                //IEnumerable<RankedPlayerInfo> sortedRankedPlayer = userRankedPlayerControls.OrderBy(Item => -Item.Player.Goals);
-                foreach (var rankedPlayerItem in userRankedPlayerControls)
+                IEnumerable<RankedPlayerInfo> sortedRankedPlayer1 = userRankedPlayerControls.OrderBy(Item => -Item.Player.YellowCards);
+                IEnumerable<RankedPlayerInfo> sortedRankedPlayer = sortedRankedPlayer1.OrderBy(Item => -Item.Player.Goals);
+                foreach (var rankedPlayerItem in sortedRankedPlayer)
                 {
                     pnlRankedPlayerContainer.Controls.Add(rankedPlayerItem);
                 }
@@ -293,13 +287,15 @@ namespace WindowsFormsApp
             int x = 230;
             int y = 50;
 
+            List<TeamEvent> sortedRankedPlayer1 = userRankedPlayerControlsList.OrderBy(Item => -Item.YellowCards).ToList();
+            List<TeamEvent> sortedRankedPlayer = sortedRankedPlayer1.OrderBy(Item => -Item.Goals).ToList();
             //Players
             e.Graphics.DrawString("RANKED PLAYERS", Font, Brushes.Black, x, y);
-            for (int i = 0; i < userRankedPlayerControlsList.Count; i++)
+            for (int i = 0; i < sortedRankedPlayer.Count; i++)
             {
-                e.Graphics.DrawString("Player: " + userRankedPlayerControlsList[i].Player + " - - -" +
-                    " Goals: " + userRankedPlayerControlsList[i].Goals + " - - -" +
-                    " Yellow cards: " + userRankedPlayerControlsList[i].YellowCards,
+                e.Graphics.DrawString("Player: " + sortedRankedPlayer[i].Player + " - - -" +
+                    " Goals: " + sortedRankedPlayer[i].Goals + " - - -" +
+                    " Yellow cards: " + sortedRankedPlayer[i].YellowCards,
                     Font, Brushes.Black, x, y += 20);
             }
 

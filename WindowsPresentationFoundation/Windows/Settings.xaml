@@ -67,9 +67,10 @@
         <RadioButton x:Name="rbtnMale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="90 10 10 10" Content="{x:Static lang:Resources.rbtnMale}"/>
         
         <Label x:Name="Resolution" Grid.Row="7" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Resolution}"/>
-        <RadioButton x:Name="rbtn480p" Grid.Row="6" Grid.Column="3" Width="100" Height="15" Content="800 x 500"/>
-        <RadioButton x:Name="rbtn720p" Grid.Row="7" Grid.Column="3" Width="100" Height="15" Content="1280 x 720"/>
-        <RadioButton x:Name="rbtn1080p" Grid.Row="8" Grid.Column="3" Width="100" Height="15" Content="1920 x 1080"/>
+        <RadioButton x:Name="rbtn480p" Grid.Row="6" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="800 x 500"/>
+        <RadioButton x:Name="rbtn720p" Grid.Row="7" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="1280 x 720"/>
+        <RadioButton x:Name="rbtn1080p" Grid.Row="8" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="1920 x 1080"/>
+        <RadioButton x:Name="rbtnFullScreen" Grid.Row="9" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="Full screen"/>
 
         <Button x:Name="btnAccept" Grid.Row="10" Grid.Column="2" Width="120" Height="30" Content="{x:Static lang:Resources.btnAccept}" Click="BtnAccept_Click" IsDefault="True"/>
         <Button x:Name="btnCancel" Grid.Row="10" Grid.Column="3" Width="120" Height="30" Content="{x:Static lang:Resources.btnCancel}" Click="BtnCancel_Click" IsCancel="True"/>

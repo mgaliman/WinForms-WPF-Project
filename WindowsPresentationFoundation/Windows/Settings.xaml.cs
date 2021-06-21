@@ -39,9 +39,13 @@ namespace WindowsPresentationFoundation
             {
                 SettingsFile.resolution = "720p";
             }
-            else
+            else if((bool)rbtn1080p.IsChecked)
             {
                 SettingsFile.resolution = "1080p";
+            }
+            else
+            {
+                SettingsFile.resolution = "FullScreen";
             }
             Repository.SaveSettings();
             new MainWindow().Show();
@@ -98,6 +102,9 @@ namespace WindowsPresentationFoundation
                     break;
                 case "1080p":
                     rbtn1080p.IsChecked = true;
+                    break;
+                case "FullScreen":
+                    rbtnFullScreen.IsChecked = true;
                     break;
             }
         }

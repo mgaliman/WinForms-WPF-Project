@@ -1,0 +1,13 @@
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\RestSharp.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\bin\Debug\RestSharp.xml
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.MyResources.resources
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\mgali\Desktop\Visual Studio Projects\OOP.NET-Project\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

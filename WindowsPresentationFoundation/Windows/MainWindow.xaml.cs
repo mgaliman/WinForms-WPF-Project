@@ -15,6 +15,8 @@ namespace WindowsPresentationFoundation
     {
         HashSet<Matches> matches = new HashSet<Matches>();
         HashSet<Results> results = new HashSet<Results>();
+        HashSet<StartingEleven> startingEleven = new HashSet<StartingEleven>();
+
         Results country = new Results();
         public MainWindow()
         {
@@ -47,6 +49,9 @@ namespace WindowsPresentationFoundation
                     Width = 1920;
                     Height = 1080;
                     break;
+                case "FullScreen":
+                    WindowState = WindowState.Maximized;
+                    break;
             }
         }
 
@@ -75,6 +80,10 @@ namespace WindowsPresentationFoundation
                 SettingsFile.countryIndex = ddlCountries.SelectedIndex;
                 Repository.SaveSettings();
                 FillPlayerData();
+                hGoalie.Children.Clear();
+                hDefender.Children.Clear();
+                hForward.Children.Clear();
+                hMidField.Children.Clear();
                 AddHomePlayers();
             }
             catch (Exception ex)
@@ -86,60 +95,35 @@ namespace WindowsPresentationFoundation
 
         private void AddHomePlayers()
         {
-            List<StartingEleven> listDefender = new List<StartingEleven>();
-            List<StartingEleven> listForward = new List<StartingEleven>();
-            List<StartingEleven> listMidfield = new List<StartingEleven>();
             foreach (var matchesItem in matches)
             {
                 if (matchesItem.HomeTeamStatistics.Country == SettingsFile.country)
                 {
-                    foreach (var StartingElevenItem in matchesItem.HomeTeamStatistics.StartingEleven)
+                    startingEleven = new HashSet<StartingEleven>();
+                    foreach (var startingElevenItem in matchesItem.HomeTeamStatistics.StartingEleven)
                     {
-                        switch (StartingElevenItem.Position)
-                        {
-                            case Position.Defender:
-                                listDefender.Add(StartingElevenItem);
-                                break;
-                            case Position.Forward:
-                                listForward.Add(StartingElevenItem);
-                                break;
-                            case Position.Goalie:
-                                hGoalie.Content = new UCPlayer(StartingElevenItem);
-                                break;
-                            case Position.Midfield:
-                                listMidfield.Add(StartingElevenItem);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    foreach (var StartingElevenItem in matchesItem.AwayTeamStatistics.StartingEleven)
-                    {
-                        switch (StartingElevenItem.Position)
-                        {
-                            case Position.Defender:
-                                hDefender1.Content = new UCPlayer(listDefender[0]);
-                                hDefender2.Content = new UCPlayer(listDefender[1]);
-                                hDefender3.Content = new UCPlayer(listDefender[2]);
-                                hDefender4.Content = new UCPlayer(listDefender[3]);
-                                break;
-                            case Position.Forward:
-                                hForward1.Content = new UCPlayer(listForward[0]);
-                                hForward2.Content = new UCPlayer(listForward[1]);
-                                hForward3.Content = new UCPlayer(listForward[2]);
-                                hForward4.Content = new UCPlayer(listForward[3]);
-                                break;
-                            case Position.Goalie:
-                                //aGoalie.Content = new UCPlayer(StartingElevenItem);
-                                break;
-                            case Position.Midfield:
-                                hMidField1.Content = new UCPlayer(listMidfield[0]);
-                                hMidField2.Content = new UCPlayer(listMidfield[1]);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
+                        startingEleven.Add(startingElevenItem);                        
+                    }                    
+                }
+            }
+            foreach (var startingElevenItem in startingEleven)
+            {
+                switch (startingElevenItem.Position)
+                {
+                    case Position.Defender:
+                        hDefender.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Forward:
+                        hForward.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Goalie:
+                        hGoalie.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Midfield:
+                        hMidField.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -152,6 +136,10 @@ namespace WindowsPresentationFoundation
                 SettingsFile.versusCountryIndex = ddlVersusCountries.SelectedIndex;
                 Repository.SaveSettings();
                 GetResult();
+                aGoalie.Children.Clear();
+                aDefender.Children.Clear();
+                aForward.Children.Clear();
+                aMidField.Children.Clear();
                 AddAwayPlayers();
             }
             catch (Exception ex)
@@ -162,60 +150,35 @@ namespace WindowsPresentationFoundation
 
         private void AddAwayPlayers()
         {
-            List<StartingEleven> listDefender = new List<StartingEleven>();
-            List<StartingEleven> listForward = new List<StartingEleven>();
-            List<StartingEleven> listMidfield = new List<StartingEleven>();
             foreach (var matchesItem in matches)
             {
                 if (matchesItem.AwayTeamStatistics.Country == SettingsFile.versusCountry)
                 {
-                    foreach (var StartingElevenItem in matchesItem.AwayTeamStatistics.StartingEleven)
-                    {                        
-                        switch (StartingElevenItem.Position)
-                        {
-                            case Position.Defender:
-                                listDefender.Add(StartingElevenItem);
-                                break;
-                            case Position.Forward:
-                                listForward.Add(StartingElevenItem);
-                                break;
-                            case Position.Goalie:
-                                aGoalie.Content = new UCPlayer(StartingElevenItem);
-                                break;
-                            case Position.Midfield:
-                                listMidfield.Add(StartingElevenItem);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    foreach (var StartingElevenItem in matchesItem.AwayTeamStatistics.StartingEleven)
-                    {                        
-                        switch (StartingElevenItem.Position)
-                        {
-                            case Position.Defender:
-                                aDefender1.Content = new UCPlayer(listDefender[0]);
-                                aDefender2.Content = new UCPlayer(listDefender[1]);
-                                aDefender3.Content = new UCPlayer(listDefender[2]);
-                                aDefender4.Content = new UCPlayer(listDefender[3]);
-                                break;
-                            case Position.Forward:
-                                aForward1.Content = new UCPlayer(listForward[0]);
-                                aForward2.Content = new UCPlayer(listForward[1]);
-                                aForward3.Content = new UCPlayer(listForward[2]);
-                                aForward4.Content = new UCPlayer(listForward[3]);
-                                break;
-                            case Position.Goalie:
-                                //aGoalie.Content = new UCPlayer(StartingElevenItem);
-                                break;
-                            case Position.Midfield:
-                                aMidField1.Content = new UCPlayer(listMidfield[0]);
-                                aMidField2.Content = new UCPlayer(listMidfield[1]);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
+                    startingEleven = new HashSet<StartingEleven>();
+                    foreach (var startingElevenItem in matchesItem.AwayTeamStatistics.StartingEleven)
+                    {
+                        startingEleven.Add(startingElevenItem);                        
+                    }                    
+                }
+            }
+            foreach (var startingElevenItem in startingEleven)
+            {
+                switch (startingElevenItem.Position)
+                {
+                    case Position.Defender:
+                        aDefender.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Forward:
+                        aForward.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Goalie:
+                        aGoalie.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    case Position.Midfield:
+                        aMidField.Children.Add(new UCPlayer(startingElevenItem));
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -236,6 +199,7 @@ namespace WindowsPresentationFoundation
             try
             {
                 matches = await Repository.LoadJsonMatches();
+                //ddlVersusCountries.Items.Clear();
                 ddlVersusCountries.Items.Clear();
                 foreach (var matchesItem in matches)
                 {
