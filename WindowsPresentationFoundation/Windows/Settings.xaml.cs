@@ -39,7 +39,7 @@ namespace WindowsPresentationFoundation
             {
                 SettingsFile.resolution = "720p";
             }
-            else if((bool)rbtn1080p.IsChecked)
+            else if ((bool)rbtn1080p.IsChecked)
             {
                 SettingsFile.resolution = "1080p";
             }

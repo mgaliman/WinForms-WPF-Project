@@ -33,6 +33,7 @@ namespace WindowsPresentationFoundation
             ddlCountries.SelectedIndex = SettingsFile.countryIndex;
             ddlVersusCountries.SelectedIndex = SettingsFile.versusCountryIndex;
         }
+
         private void LoadResolution()
         {
             switch (SettingsFile.resolution)
@@ -74,27 +75,21 @@ namespace WindowsPresentationFoundation
 
         private void DdlCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            try
-            {
-                SettingsFile.country = ddlCountries.SelectedItem.ToString().Substring(0, ddlCountries.SelectedItem.ToString().IndexOf("(")).Trim();
-                SettingsFile.countryIndex = ddlCountries.SelectedIndex;
-                Repository.SaveSettings();
-                FillPlayerData();
-                hGoalie.Children.Clear();
-                hDefender.Children.Clear();
-                hForward.Children.Clear();
-                hMidField.Children.Clear();
-                AddHomePlayers();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+            //Crash
+            ddlVersusCountries.Items.Clear();
+            SettingsFile.country = ddlCountries.SelectedItem.ToString().Substring(0, ddlCountries.SelectedItem.ToString().IndexOf("(")).Trim();
+            SettingsFile.countryIndex = ddlCountries.SelectedIndex;
+            Repository.SaveSettings();            
+            FillPlayerData();
+            AddHomePlayers();
         }
 
         private void AddHomePlayers()
         {
+            hGoalie.Children.Clear();
+            hDefender.Children.Clear();
+            hForward.Children.Clear();
+            hMidField.Children.Clear();
             foreach (var matchesItem in matches)
             {
                 if (matchesItem.HomeTeamStatistics.Country == SettingsFile.country)
@@ -102,8 +97,8 @@ namespace WindowsPresentationFoundation
                     startingEleven = new HashSet<StartingEleven>();
                     foreach (var startingElevenItem in matchesItem.HomeTeamStatistics.StartingEleven)
                     {
-                        startingEleven.Add(startingElevenItem);                        
-                    }                    
+                        startingEleven.Add(startingElevenItem);
+                    }
                 }
             }
             foreach (var startingElevenItem in startingEleven)
@@ -129,27 +124,20 @@ namespace WindowsPresentationFoundation
         }
 
         private void DdlVersusCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                SettingsFile.versusCountry = ddlVersusCountries.SelectedItem.ToString();
-                SettingsFile.versusCountryIndex = ddlVersusCountries.SelectedIndex;
-                Repository.SaveSettings();
-                GetResult();
-                aGoalie.Children.Clear();
-                aDefender.Children.Clear();
-                aForward.Children.Clear();
-                aMidField.Children.Clear();
-                AddAwayPlayers();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        {                         
+            SettingsFile.versusCountry = ddlVersusCountries.SelectedItem.ToString();            
+            SettingsFile.versusCountryIndex = ddlVersusCountries.SelectedIndex;
+            Repository.SaveSettings();
+            GetResult();            
+            AddAwayPlayers();
         }
 
         private void AddAwayPlayers()
         {
+            aGoalie.Children.Clear();
+            aDefender.Children.Clear();
+            aForward.Children.Clear();
+            aMidField.Children.Clear();
             foreach (var matchesItem in matches)
             {
                 if (matchesItem.AwayTeamStatistics.Country == SettingsFile.versusCountry)
@@ -157,8 +145,8 @@ namespace WindowsPresentationFoundation
                     startingEleven = new HashSet<StartingEleven>();
                     foreach (var startingElevenItem in matchesItem.AwayTeamStatistics.StartingEleven)
                     {
-                        startingEleven.Add(startingElevenItem);                        
-                    }                    
+                        startingEleven.Add(startingElevenItem);
+                    }
                 }
             }
             foreach (var startingElevenItem in startingEleven)
@@ -198,9 +186,7 @@ namespace WindowsPresentationFoundation
         {
             try
             {
-                matches = await Repository.LoadJsonMatches();
-                //ddlVersusCountries.Items.Clear();
-                ddlVersusCountries.Items.Clear();
+                matches = await Repository.LoadJsonMatches();                
                 foreach (var matchesItem in matches)
                 {
                     if (matchesItem.HomeTeamStatistics.Country == SettingsFile.country)

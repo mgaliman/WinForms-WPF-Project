@@ -85,7 +85,6 @@ namespace WindowsFormsApp
         private async void FillData()
         {
             lblInfo.Text = "Waiting to fetch data!";
-
             try
             {
                 HashSet<Teams> teams = await Repository.LoadJsonTeams();
@@ -137,9 +136,6 @@ namespace WindowsFormsApp
 
                 userRankedPlayerControlsList = new List<TeamEvent>();
                 userRankedStadiumControlsList = new List<Matches>();
-
-
-
 
                 foreach (var players in matches)
                 {
@@ -198,8 +194,10 @@ namespace WindowsFormsApp
                     foreach (var rankedItem in rankedPlayerList)
                     {
                         if (playerItem.Name == rankedItem.Player)
-                        {                            
-                            rankedPlayer.Player = rankedItem.Player;
+                        {
+                            string rankedPlayerName = rankedItem.Player;
+                            rankedPlayerName = new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(rankedPlayerName.ToLower());
+                            rankedPlayer.Player = rankedPlayerName;
                             switch (rankedItem.TypeOfEvent)
                             {
                                 case "goal":
@@ -208,15 +206,18 @@ namespace WindowsFormsApp
                                 case "yellow-card":
                                     rankedPlayer.YellowCards++;
                                     break;
-                            }                            
+                            }
                         }
                     };
 
                     if (!(rankedPlayer.Goals == 0 && rankedPlayer.YellowCards == 0))
                     {
-                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));                        
+                        userRankedPlayerControls.Add(new RankedPlayerInfo(rankedPlayer));
                         userRankedPlayerControlsList.Add(rankedPlayer);
                     }
+                    string playerName = playerItem.Name;
+                    playerName = new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(playerName.ToLower());
+                    playerItem.Name = playerName;
                     userPlayerControls.Add(new PlayerInfo(playerItem));
                 }
 

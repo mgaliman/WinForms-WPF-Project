@@ -6,7 +6,7 @@
         xmlns:lang="clr-namespace:WindowsPresentationFoundation.Properties"
         xmlns:local="clr-namespace:WindowsPresentationFoundation.Windows"
         mc:Ignorable="d"
-        Title="PlayerInfoWindow" Height="330" Width="180" WindowStartupLocation="CenterScreen">
+        Title="PlayerInfoWindow" Height="330" Width="220" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <LinearGradientBrush x:Key="background" StartPoint="0,0" EndPoint="1,1">
             <LinearGradientBrush.GradientStops>
@@ -33,7 +33,7 @@
     </Window.Resources>
     <Grid Background="{StaticResource ResourceKey=background}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>

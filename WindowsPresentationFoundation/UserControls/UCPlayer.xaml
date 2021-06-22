@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
              xmlns:local="clr-namespace:WindowsPresentationFoundation.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="100">
+             d:DesignHeight="80" d:DesignWidth="100">
     <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
 
         <Ellipse 
+            Margin="0,15,0,0"
             Grid.Row="0"
             Grid.ColumnSpan="2"
             Width="30"
@@ -28,6 +29,7 @@
             Canvas.Top="100"/>
         
         <Label
+            Margin="0,15,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Grid.Row="0"
@@ -45,7 +47,7 @@
             x:Name="lblPlayer" 
             FontSize="10"
             Foreground="White"
-            Margin="-11"
+            Margin="0,-11,0,15"
             Content="playerName"/>
     </Grid>
 </UserControl>

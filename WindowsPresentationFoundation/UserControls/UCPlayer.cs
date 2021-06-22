@@ -13,8 +13,11 @@ namespace WindowsPresentationFoundation.UserControls
         public UCPlayer(StartingEleven startingEleven)
         {
             InitializeComponent();
-            DataContext = this;
-            lblPlayer.Content = startingEleven.Name;
+            player = startingEleven;
+
+            string name = startingEleven.Name;
+            name = new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(name.ToLower());
+            lblPlayer.Content = name;
             lblShirtNumber.Content = startingEleven.ShirtNumber;
         }
         public string PlayerName { get; set; }
@@ -22,8 +25,6 @@ namespace WindowsPresentationFoundation.UserControls
 
         private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            player = new StartingEleven();
-            
             new PlayerInfoWindow(player).Show();
         }
     }
