@@ -18,7 +18,7 @@ namespace WindowsPresentationFoundation
         private void Init()
         {
             Repository.LoadSettings();
-            Repository.LoadLanguage();
+            Repository.LoadLanguage();            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

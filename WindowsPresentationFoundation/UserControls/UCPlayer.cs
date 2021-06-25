@@ -1,6 +1,9 @@
 ﻿using DataAccessLayer.Models;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using WindowsPresentationFoundation.Windows;
+using WpfAnimatedGif;
 
 namespace WindowsPresentationFoundation.UserControls
 {
@@ -23,9 +26,6 @@ namespace WindowsPresentationFoundation.UserControls
         public string PlayerName { get; set; }
         public int ShirtNumber { get; set; }
 
-        private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            new PlayerInfoWindow(player).Show();
-        }
+        private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e) => new PlayerInfoWindow(player).Show();
     }
 }

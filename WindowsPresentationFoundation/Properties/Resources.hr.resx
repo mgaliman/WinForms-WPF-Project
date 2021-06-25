@@ -129,6 +129,9 @@
   <data name="btnLanguage" xml:space="preserve">
     <value>Engleski</value>
   </data>
+  <data name="btnSettings" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
   <data name="Championship" xml:space="preserve">
     <value>Prvenstvo:</value>
   </data>

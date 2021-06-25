@@ -45,8 +45,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-  
-        <Image Grid.Row="0" Grid.ColumnSpan="2" Margin="5" Height="100" HorizontalAlignment="Center" Source="/DataAccessLayer;component/pictures/defaultUser.png" />
+
+        <Image x:Name="PlayerImage" Grid.Row="0" Grid.ColumnSpan="2" Margin="5" Height="100" HorizontalAlignment="Center"/>
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static lang:Resources.lblName}"/>
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" x:Name="lblNameData" Content="data"/>
         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Content="{x:Static lang:Resources.lblShirtNumber}"/>

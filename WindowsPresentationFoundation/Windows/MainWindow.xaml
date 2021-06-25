@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uc="clr-namespace:WindowsPresentationFoundation.UserControls"
         xmlns:lang="clr-namespace:WindowsPresentationFoundation.Properties"
-        xmlns:local="clr-namespace:WindowsPresentationFoundation"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" 
         Closing="Window_Closing">
@@ -32,7 +31,8 @@
                 </BeginStoryboard>
             </EventTrigger.Actions>
         </EventTrigger>
-    </Window.Resources>
+    </Window.Resources>    
+
     <Grid Background="{StaticResource ResourceKey=background}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -49,7 +49,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>        
 
         <ComboBox x:Name="ddlCountries" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Width="180" Height="20" SelectionChanged="DdlCountries_SelectionChanged" Margin="10"/>
 
@@ -61,9 +61,14 @@
 
         <Button x:Name="btnInfoVersusCountry" Grid.Row="0" Grid.Column="5" Width="40" Height="20" Content="{x:Static lang:Resources.btnInfo}" Click="BtnInfoVersusCountry_Click"/>
 
-        <!--<MediaElement x:Name="gif" Grid.RowSpan="2" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" MediaEnded="Gif_MediaEnded" UnloadedBehavior="Manual" Source="/Materials/Loading.gif" LoadedBehavior="Play" Stretch="None" Width="60" Height="60"/>-->
+        
+        <Button x:Name="btnSettings" Grid.Row="0" Grid.Column="9" Width="40" Height="40" Click="BtnSettings_Click">
+            <Image x:Name="imageSettings"/>
+        </Button>
 
-        <Image Grid.Row="1" Grid.ColumnSpan="8" Grid.Column="1" Source="/Materials/FootballPitch.png"  Margin="10"/>
+        <Image x:Name="FootballField" Grid.Row="1" Grid.ColumnSpan="8" Grid.Column="1" Source="/Materials/FootballPitch.png"  Margin="10"/>
+
+        <Image x:Name="loadingCountry" Grid.Row="2" Grid.ColumnSpan="10" Width="200"/>
 
         <StackPanel x:Name="hGoalie" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
         <StackPanel x:Name="hDefender" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" />

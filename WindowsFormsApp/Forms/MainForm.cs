@@ -224,7 +224,7 @@ namespace WindowsFormsApp
                 //Unranked players
                 foreach (var unrankedplayerItem in userPlayerControls)
                 {
-                    pnlPlayersContainer.Controls.Add(unrankedplayerItem);
+                    pnlPlayersContainer.Controls.Add(unrankedplayerItem);                  
                     //Favourites
                     foreach (var favouriteItem in userFavourites)
                     {

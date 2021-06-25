@@ -1,6 +1,9 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp
@@ -28,6 +31,18 @@ namespace WindowsFormsApp
             lblCaptain.Text = player.Captain ? "Captain" : " ";
             lblFavourite.Text = selected ? "Favourite" : "Not Favourite ";
             pbPlayer.Image = Repository.GetPicture();
+           
+            string[] filePaths = Directory.GetFiles(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"Pictures/Saved/"));
+            for (int i = 0; i < filePaths.Length; i++)
+            {                
+                string exactFile = ($"{filePaths[i].Substring(filePaths[i].IndexOf("d/") + 2)}");
+                string parsedFile = exactFile.Remove(exactFile.IndexOf('.'));
+                if (player.Name == parsedFile)
+                {
+                    pbPlayer.Image = Image.FromFile(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"Pictures/Saved/{Player.Name}.jfif"));
+                }
+                
+            }
             player.Picture = pbPlayer.Image;
         }
 
@@ -55,6 +70,8 @@ namespace WindowsFormsApp
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 pictureBox.Image = frm.GetUpdatedPicture().Image;
+                Image image = frm.GetUpdatedPicture().Image;
+                image.Save(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"Pictures/Saved/{Player.Name}.jfif"));
             }
             frm.Refresh();
         }

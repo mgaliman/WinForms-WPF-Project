@@ -2,9 +2,14 @@
 using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using WindowsPresentationFoundation.UserControls;
 using WindowsPresentationFoundation.Windows;
+using WpfAnimatedGif;
 
 namespace WindowsPresentationFoundation
 {
@@ -32,6 +37,8 @@ namespace WindowsPresentationFoundation
             FillData();
             ddlCountries.SelectedIndex = SettingsFile.countryIndex;
             ddlVersusCountries.SelectedIndex = SettingsFile.versusCountryIndex;
+            var uriSource = new Uri(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"DataAccessLayer/pictures/settings.png"));
+            imageSettings.Source = new BitmapImage(uriSource);
         }
 
         private void LoadResolution()
@@ -74,14 +81,14 @@ namespace WindowsPresentationFoundation
         }
 
         private void DdlCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            //Crash
+        {            
             ddlVersusCountries.Items.Clear();
             SettingsFile.country = ddlCountries.SelectedItem.ToString().Substring(0, ddlCountries.SelectedItem.ToString().IndexOf("(")).Trim();
             SettingsFile.countryIndex = ddlCountries.SelectedIndex;
             Repository.SaveSettings();            
             FillPlayerData();
             AddHomePlayers();
+            AddAwayPlayers();
         }
 
         private void AddHomePlayers()
@@ -124,12 +131,16 @@ namespace WindowsPresentationFoundation
         }
 
         private void DdlVersusCountries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {                         
+        {
+            if (ddlVersusCountries.SelectedItem == null)             
+                return;
+            
             SettingsFile.versusCountry = ddlVersusCountries.SelectedItem.ToString();            
             SettingsFile.versusCountryIndex = ddlVersusCountries.SelectedIndex;
-            Repository.SaveSettings();
-            GetResult();            
+            Repository.SaveSettings();                       
+            AddHomePlayers();
             AddAwayPlayers();
+            GetResult();
         }
 
         private void AddAwayPlayers()
@@ -200,11 +211,6 @@ namespace WindowsPresentationFoundation
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Gif_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            //gif.Position = new TimeSpan(0, 0, 1);
-            //gif.Play();
-        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -213,20 +219,45 @@ namespace WindowsPresentationFoundation
 
         private void BtnInfoCountry_Click(object sender, RoutedEventArgs e)
         {
-            country = new Results();
-            foreach (var item in results)
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"WindowsPresentationFoundation/Materials/countryLoading.gif"));            
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(loadingCountry, image);
+
+            Task.Factory.StartNew(() => Thread.Sleep(1 * 1000))
+            .ContinueWith((t) =>
             {
-                if (item.Country == SettingsFile.country)
+                country = new Results();
+                foreach (var item in results)
                 {
-                    country = item;
+                    if (item.Country == SettingsFile.country)
+                    {
+                        country = item;
+                    }
                 }
-            }
-            new InformationWindow(country).Show();
+                new InformationWindow(country).Show();
+
+                image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"WindowsPresentationFoundation/Materials/invisible.png"));
+                image.EndInit();
+                ImageBehavior.SetAnimatedSource(loadingCountry, image);
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void BtnInfoVersusCountry_Click(object sender, RoutedEventArgs e)
         {
-            country = new Results();
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"WindowsPresentationFoundation/Materials/countryLoading.gif"));
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(loadingCountry, image);
+
+            Task.Factory.StartNew(() => Thread.Sleep(1 * 1000))
+            .ContinueWith((t) =>
+            {
+                country = new Results();
             foreach (var item in results)
             {
                 if (item.Country == SettingsFile.versusCountry)
@@ -235,6 +266,18 @@ namespace WindowsPresentationFoundation
                 }
             }
             new InformationWindow(country).Show();
+                image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, $"WindowsPresentationFoundation/Materials/invisible.png"));
+                image.EndInit();
+                ImageBehavior.SetAnimatedSource(loadingCountry, image);
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            new Settings().Show();
         }
     }
 }

@@ -126,6 +126,9 @@
   <data name="btnInfo" xml:space="preserve">
     <value>Info</value>
   </data>
+  <data name="btnSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Championship" xml:space="preserve">
     <value>Championship:</value>
   </data>
